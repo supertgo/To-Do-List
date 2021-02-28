@@ -1,0 +1,26 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supertgo/To-Do-List.git"
+  },
+  "author": "Thiago Roberto (SuperTgo)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/supertgo/To-Do-List/issues"
+  },
+  "homepage": "https://github.com/supertgo/To-Do-List#readme",
+  "devDependencies": {
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
