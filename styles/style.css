@@ -1,0 +1,43 @@
+body {
+    width: 100%;
+}
+
+#content {
+    display: grid;
+    grid-template-areas:     
+    "sidebar content content"
+    "footer  footer  footer";
+    
+}
+
+#sideBar {
+    background-color: black;
+    float: left;
+    text-align: center;
+    grid-area: sidebar;
+}
+
+#menu {
+    background-color: gray;
+    grid-area: content;
+    position: relative;
+    text-align: center;
+}
+
+
+
+footer {
+    background-color: brown;
+    grid-area: footer;
+}
+
+#taskInput {
+    
+    border-radius: 3%;
+    padding: 1%;
+    margin-top: 3%;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    width: 300px;
+}
