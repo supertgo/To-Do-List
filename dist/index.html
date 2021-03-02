@@ -12,9 +12,13 @@
 
     <body>
         <div id="content">
+
+            <header>
+                <h1>SuperTgo´s To Do List</h1>
+            </header>
+
             <div id="sideBar">
                 <h1>To Do List</h1>
-
                 <!-- Todos as listas com o número de ToDos -->
 
                 <div id="lists"></div>
@@ -23,12 +27,19 @@
             
             <div id="menu">
                 <!-- Opcao para escolher a lista -->
+                <label for="projects">Choose the list</label>
+
+                <select id="projects">
+                    <option value="MyList">MyList</option>
+                 </select>
                 
             <!-- Campo para texto escrito adicior na tarefa| colocar um mais-->
-            <input type="text" placeholder="Add a task" id="taskInput">
+                <input type="text" placeholder="Add a task" id="taskInput">
+                <button type="button">+</button>
+
                 <div id="todos">
                     <div id="noDates">
-                        
+                        <h4>W/O dates</h4>
                     </div>
                     <div id="conclused">
 
@@ -37,15 +48,37 @@
             </div>
 
             <div id="modal">
-                <!-- nome da tarefa -->
+                <form id="addTask">
+                    <!-- nome da tarefa -->
+                    <label> Task Name: 
+                        <input type="text" placeholder="Task Name">
+                    </label>
+                
+                    <!-- detalhes -->
+                    
+                    <label>Description:
+                        <input type="text" placeholder="Description:" id="inputTextDesc"> 
+                    </label>
+                    
+                    <!-- data -->
+                    <label> Date:
+                        <input type="date" name="date" id="date">
+                    </label>
+                    <!-- prioridade --> 
 
-                <!-- detalhes -->
-
-                <!-- data -->
-
-                <!-- prioridade -->
-
-                <!-- funcao de repetir -->
+                    <label for="priority">Priority
+                        <select name="priority" id="priority">
+                        
+                            <option value=""></option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                     </label>
+                    <!-- funcao de repetir -->
+                </form>
+                
             </div>
 
             <footer>

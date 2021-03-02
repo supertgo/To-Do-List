@@ -2,32 +2,39 @@ body {
     width: 100%;
 }
 
+header {
+    
+    background-color: rgba(9, 175, 252, 0.527);
+    text-align: center;
+    grid-area: header;
+}
+    
 #content {
+
     display: grid;
-    grid-template-areas:     
+    grid-template-areas:  
+    "header   header header"   
     "sidebar content content"
     "footer  footer  footer";
     
 }
 
 #sideBar {
-    background-color: black;
+    background-color: rgba(47, 120, 153, 0.527);
     float: left;
     text-align: center;
     grid-area: sidebar;
 }
 
 #menu {
-    background-color: gray;
+    background-color: rgba(105, 8, 8, 0.034);
     grid-area: content;
     position: relative;
     text-align: center;
 }
 
-
-
 footer {
-    background-color: brown;
+    background-color: rgba(255, 255, 255, 0);
     grid-area: footer;
 }
 
@@ -40,4 +47,30 @@ footer {
     border: none;
     outline: none;
     width: 300px;
+}
+
+
+
+#modal {
+
+    background-color: cornflowerblue;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    display: none;
+    
+}
+
+#addTask {
+    margin: 50px;
+}
+
+#modal label, input {
+    display: block;
+}
+
+#modal label {
+    padding: 5%;
 }
