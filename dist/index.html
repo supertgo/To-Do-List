@@ -6,85 +6,35 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <title>SuperTgo´s ToDoList</title>
     </head>
 
     <body>
-        <div id="content">
+        <main>
 
-            <header>
-                <h1>SuperTgo´s To Do List</h1>
-            </header>
-
-            <div id="sideBar">
+            <div class="sideBar">
                 <h1>To Do List</h1>
-                <!-- Todos as listas com o número de ToDos -->
 
-                <div id="lists"></div>
-            </div>
+                <h2>MyProjects</h2>
 
-            
-            <div id="menu">
-                <!-- Opcao para escolher a lista -->
-                <label for="projects">Choose the list</label>
-
-                <select id="projects">
-                    <option value="MyList">MyList</option>
-                 </select>
-                
-            <!-- Campo para texto escrito adicior na tarefa| colocar um mais-->
-                <input type="text" placeholder="Add a task" id="taskInput">
-                <button type="button">+</button>
-
-                <div id="todos">
-                    <div id="noDates">
-                        <h4>W/O dates</h4>
-                    </div>
-                    <div id="conclused">
-
-                    </div>
-                </div>
-            </div>
-
-            <div id="modal">
-                <form id="addTask">
-                    <!-- nome da tarefa -->
-                    <label> Task Name: 
-                        <input type="text" placeholder="Task Name">
-                    </label>
-                
-                    <!-- detalhes -->
+                <ul>
+                    <li>futuras</li>
+                    <li>listas</li>
+                    <li>teste</li>
                     
-                    <label>Description:
-                        <input type="text" placeholder="Description:" id="inputTextDesc"> 
-                    </label>
-                    
-                    <!-- data -->
-                    <label> Date:
-                        <input type="date" name="date" id="date">
-                    </label>
-                    <!-- prioridade --> 
-
-                    <label for="priority">Priority
-                        <select name="priority" id="priority">
-                        
-                            <option value=""></option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
-                            <option value="D">D</option>
-                        </select>
-                     </label>
-                    <!-- funcao de repetir -->
-                </form>
-                
+                </ul>
             </div>
 
-            <footer>
-                <p>SuperTgo <img src="" alt="SuperTgos´s GitHub"></p>
-            </footer>
-        </div>
+            <div class="teste">
+                <h1>Teste</h1>
+            </div>
+        </main>
+
+        <footer>
+            <p>SuperTgo <img src="" alt="SuperTgos´s GitHub"></p>
+        </footer>
         <script src="main.js"></script>
     </body>
 

@@ -1,56 +1,38 @@
 body {
+    background-color: rgb(255, 255, 255);
+    color: white;
+}
+
+*{
+    list-style: none;
+    margin: 0;
+}
+.sideBar{
+    position: fixed;
+    left: 0;
+    width: 30%;
+    height: 100%;
+    background-color: rgb(6, 130, 247);
+}
+
+.teste {
+    
+}
+#main {
+    margin: 0 auto;
     width: 100%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.212);
+    padding: 55px;
 }
-
-header {
+.menu {
     
-    background-color: rgba(9, 175, 252, 0.527);
-    text-align: center;
-    grid-area: header;
-}
-    
-#content {
-
-    display: grid;
-    grid-template-areas:  
-    "header   header header"   
-    "sidebar content content"
-    "footer  footer  footer";
-    
+    justify-content: space-between;
 }
 
-#sideBar {
-    background-color: rgba(47, 120, 153, 0.527);
-    float: left;
-    text-align: center;
-    grid-area: sidebar;
+.menu input {
+    width: 350px;
 }
-
-#menu {
-    background-color: rgba(105, 8, 8, 0.034);
-    grid-area: content;
-    position: relative;
-    text-align: center;
-}
-
-footer {
-    background-color: rgba(255, 255, 255, 0);
-    grid-area: footer;
-}
-
-#taskInput {
-    
-    border-radius: 3%;
-    padding: 1%;
-    margin-top: 3%;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    width: 300px;
-}
-
-
-
 #modal {
 
     background-color: cornflowerblue;
@@ -63,14 +45,4 @@ footer {
     
 }
 
-#addTask {
-    margin: 50px;
-}
 
-#modal label, input {
-    display: block;
-}
-
-#modal label {
-    padding: 5%;
-}
