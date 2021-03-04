@@ -1,60 +1,133 @@
 body {
-    background-color: rgb(255, 255, 255);
-    color: white;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     width: 100vw;
     height: 100vw;
+   
 }
 
 *{
-  
     margin: 0;
 }
 
 header {
-    grid-area: header;
-}
-
-.teste {
-    width: 70%;
-}
-
-main {
-
-    display: grid;  
-    margin: 0 auto;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.212);
-    grid-template-columns: 
-    "header  header  header"
-    "sidebar content content"
-    "footer  footer  footer";
-
-}
-
-.sideBar{
-
-    display: grid;
-    position: fixed;
-    left: 0;
-    height: 100%;
-    background-color: rgb(6, 130, 247);
-   
-}
-
-.menu {
-    grid-area: content;
     
 }
 
-.menu input {
-    width: 350px;
+
+main {
+ 
+    margin: 0 auto;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.212);
+    padding: 55px;
+    max-width: 450px;
+
 }
 
-footer {
-    grid-area: footer;
+.lists {
+    border-bottom: 1px solid white;
+    padding-bottom: 25px;
+    position: relative;
 }
-#modal {
+
+.lists:hover .lists-list {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lists-select {
+
+    padding: 1rem;
+    border-radius: 4px;
+    background-color: white;
+    color: black;
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.lists-list {
+    border-radius: 4px;
+    background-color: white;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s linear, visibility 0.2s linear;
+
+}
+
+.lists-list__item {
+    color: black;
+    padding: 1rem;
+    font-size: 1rem;
+}
+select {
+    outline: none;
+    width: 100px;
+    padding: 0.5rem;
+    width: 50%;
+    cursor: pointer;
+}
+
+option {
+    padding: 1.5rem;
+}
+.top {
+   
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.top input {
+    width: 350px;
+    padding: 15px;
+    outline: none;
+    border-radius: 12px;
+}
+
+.top button {
+    width: 45px;
+}
+
+.top button:hover {
+    cursor: pointer;
+}
+
+.todos li {
+    list-style: none;
+    background-color: gray;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todos li button {
+    border-radius: 12px;
+    width: 38px;
+    height: 38px;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    background: black;
+}
+
+.todos #checked {
+    cursor: pointer;
+}
+footer {
+    
+}
+
+.modal {
 
     background-color: cornflowerblue;
     position: fixed;
@@ -62,8 +135,17 @@ footer {
     left: 50%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 50px;
     display: none;
     
 }
 
+.modal input, label {
+    display: block;
+}
+
+.modal label {
+    margin-bottom: 20px;
+}
 
