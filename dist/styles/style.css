@@ -17,7 +17,7 @@ header {
 
 main {
  
-    margin: 0 auto;
+    margin: 35px auto;
     width: 100%;
     background: rgba(255, 255, 255, 0.212);
     padding: 55px;
@@ -50,6 +50,7 @@ main {
 }
 
 .lists-list {
+    
     border-radius: 4px;
     background-color: white;
     position: absolute;
@@ -95,6 +96,8 @@ option {
 
 .top button {
     width: 45px;
+    border-radius: 12px;
+    outline: none;
 }
 
 .top button:hover {
@@ -120,7 +123,7 @@ option {
     background: black;
 }
 
-.todos #checked {
+.todos .checked {
     cursor: pointer;
 }
 footer {

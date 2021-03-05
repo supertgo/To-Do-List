@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
+eval("const btn = document.querySelector(\"#btnAddTask\");\nconst divTodos = document.querySelector('.todos');\n\ncriaTarefa = () => {\n\n    let li = document.createElement('li');\n    let divChecked = document.createElement('div');\n    let spanName = document.createElement('span');\n    let div = document.createElement('div');\n    let btnEdit = document.createElement('button');\n    let btnTrash = document.createElement('button');\n    let iPencil = document.createElement('i');\n    let iTrash = document.createElement('i');\n\n    li.appendChild(divChecked);\n    divChecked.appendChild(btnEdit);\n    li.appendChild(spanName);\n    li.appendChild(div);\n    div.appendChild(btnEdit);\n    div.appendChild(btnTrash);\n\n    divChecked.classList.add('checked');\n    iPencil.classList.add('fa.fa-pencil');\n    iTrash.classList.add('fa.fa-trash');\n\n\n    return li;\n}\n\n\n\nbtn.addEventListener('click', ()=> divTodos.append(criaTarefa()));\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
 
 /***/ })
 
