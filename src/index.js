@@ -9,6 +9,7 @@ criaTarefa = () => {
     let div = document.createElement('div');
     let btnEdit = document.createElement('button');
     let btnTrash = document.createElement('button');
+    let iCircle = document.createElement('i');
     let iPencil = document.createElement('i');
     let iTrash = document.createElement('i');
 
@@ -20,8 +21,15 @@ criaTarefa = () => {
     div.appendChild(btnTrash);
 
     divChecked.classList.add('checked');
-    iPencil.classList.add('fa.fa-pencil');
-    iTrash.classList.add('fa.fa-trash');
+    
+
+    iCircle.classList.add('fa', 'fa-circle-o');
+    iPencil.classList.add('fa','fa-pencil');
+    iTrash.classList.add('fa','fa-trash');
+
+    divChecked.appendChild(iCircle);
+    btnEdit.appendChild(iPencil);
+    btnTrash.appendChild(iTrash);
 
 
     return li;
