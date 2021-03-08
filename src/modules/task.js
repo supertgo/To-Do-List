@@ -32,10 +32,21 @@ function taskAdd (nameTask){
     btnTrash.appendChild(iTrash);
 
     taskRemove(btnTrash);
+
+    openEditor(btnEdit);
     
     setInputToNone();
     
     return li;  
+}
+
+function openEditor (btn) {
+
+    let modal = document.querySelector('.modal');
+
+    btn.addEventListener('click', () => {
+        modal.style.display = 'block';
+    }); 
 }
 
 function taskRemove (btn){
@@ -56,4 +67,6 @@ function setInputToNone  () {
     let inputAddText = document.querySelector('#inputAddTask');
     inputAddText.value = ' ';
 }
+
+
 export default taskAdd;
