@@ -1,4 +1,7 @@
-function criaTarefa (){
+let btnTrashs = document.querySelectorAll('.btnRemove');
+
+
+function taskAdd (nameTask){
 
     let li = document.createElement('li');
     let divChecked = document.createElement('div');
@@ -10,6 +13,8 @@ function criaTarefa (){
     let iPencil = document.createElement('i');
     let iTrash = document.createElement('i');
 
+    spanName.textContent = nameTask;
+
     li.appendChild(divChecked);
     divChecked.appendChild(btnEdit);
     li.appendChild(spanName);
@@ -18,8 +23,7 @@ function criaTarefa (){
     div.appendChild(btnTrash);
 
     divChecked.classList.add('checked');
-    
-
+    btnTrash.classList.add('btnRemove');
     iCircle.classList.add('fa', 'fa-circle-o');
     iPencil.classList.add('fa','fa-pencil');
     iTrash.classList.add('fa','fa-trash');
@@ -28,7 +32,27 @@ function criaTarefa (){
     btnEdit.appendChild(iPencil);
     btnTrash.appendChild(iTrash);
 
+    taskRemove(btnTrash);
+    
+    
     return li;  
 }
 
-export default criaTarefa;
+function taskRemove (btn){
+
+    
+    let task = btn.parentNode.parentNode;
+
+    console.log(task);
+
+    btn.addEventListener('click', () => {
+
+        let todos = document.querySelector('.todos');
+        todos.removeChild(task);
+
+    });
+    
+
+}
+
+export default taskAdd;
