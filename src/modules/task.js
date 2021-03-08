@@ -1,6 +1,5 @@
 let btnTrashs = document.querySelectorAll('.btnRemove');
 
-
 function taskAdd (nameTask){
 
     let li = document.createElement('li');
@@ -34,16 +33,14 @@ function taskAdd (nameTask){
 
     taskRemove(btnTrash);
     
+    setInputToNone();
     
     return li;  
 }
 
 function taskRemove (btn){
 
-    
     let task = btn.parentNode.parentNode;
-
-    console.log(task);
 
     btn.addEventListener('click', () => {
 
@@ -52,7 +49,11 @@ function taskRemove (btn){
 
     });
     
-
 }
 
+function setInputToNone  () {
+
+    let inputAddText = document.querySelector('#inputAddTask');
+    inputAddText.value = ' ';
+}
 export default taskAdd;
