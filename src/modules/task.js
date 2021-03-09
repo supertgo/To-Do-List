@@ -1,4 +1,5 @@
 let btnTrashs = document.querySelectorAll('.btnRemove');
+//let divTodos = document.querySelector('.todos');
 
 function taskAdd (nameTask){
 
@@ -33,20 +34,129 @@ function taskAdd (nameTask){
 
     taskRemove(btnTrash);
 
-    openEditor(btnEdit);
+    openEditor(btnEdit, spanName);
     
     setInputToNone();
     
     return li;  
 }
 
-function openEditor (btn) {
+function createDiv () {
+    return document.createElement('div');
+}
+
+
+
+function openEditor (btnEdit, spanTaskName) {
 
     let modal = document.querySelector('.modal');
+    let inputNameTaskModal = modal.children[0].children[0].children[0];
+    let btnSubmitTask  = document.querySelector('#btnSubmitTask');
 
-    btn.addEventListener('click', () => {
-        modal.style.display = 'block';
+    btnEdit.addEventListener('click', () => {
+
+        setModalToBlock(modal);
+        putNameOnModalInputName(inputNameTaskModal, spanTaskName);
+
+
     }); 
+    
+
+    btnSubmitTask.addEventListener('click', () => editTask(spanTaskName, inputNameTaskModal));
+
+    
+}
+
+function editTask (taskName, input){
+
+    taskName.textContent = input.value;
+
+    let divModal = input.parentNode.parentNode.parentNode;
+    let date = divModal.children[0].children[2].children[0].value;
+
+    let task = taskName.parentNode;
+
+    let divTodos = document.querySelector('.todos');
+
+    //verficar 
+    
+    //criar 
+    if (date != '')
+        whatToDoWithDate(date, task);
+    
+    else 
+        divTodos.children[0].appendChild(task);
+
+    setModalToNone(divModal);
+}
+
+function whatToDoWithDate (date, task) {
+
+    if (!verifyDate(date)) insertNewDiv(date);
+
+    addTaskToContainer(task, date);
+}
+
+const addTaskToContainer =  (task, date) => {
+
+    let divTodos = document.querySelector('.todos');
+
+    let index = searchForIdByDiv(divTodos, date);
+
+    if (index != -1)
+        divTodos.children[index].appendChild(task);
+
+    else 
+        console.log('error');
+}
+
+const searchForIdByDiv = (div, date) => {
+
+    for (let i = 0; i < div.childElementCount; i++)
+        if (div.children[i].id == date) return i;
+
+    return  -1;
+}
+
+const verifyDate = (taskDate) => {
+
+    let divTodos = document.querySelector('.todos');
+
+    for (let i = 0; i < divTodos.childElementCount; i++)
+        if (divTodos.children[i].id == taskDate) return true;
+
+    return false;
+    
+}
+
+const insertNewDiv = (date) => {
+
+    let div = createDiv()
+    div.id  = date;
+    div.append(insertH4WithDateName(date));
+
+    document.querySelector('.todos').append(div);
+}
+
+const insertH4WithDateName = (date) => {
+    
+    let h4 = document.createElement('h4');
+    h4.textContent = date;
+
+    return h4;
+
+}
+
+const setModalToBlock = (modal) => {
+
+    modal.style.display= 'block';
+}
+
+const setModalToNone = (modal) => {
+    modal.style.display = 'none';
+}
+const putNameOnModalInputName  = (input, name) => {
+    input.value = name.textContent;
 }
 
 function taskRemove (btn){
@@ -67,6 +177,7 @@ function setInputToNone  () {
     let inputAddText = document.querySelector('#inputAddTask');
     inputAddText.value = ' ';
 }
+
 
 
 export default taskAdd;
