@@ -41,11 +41,11 @@ function taskAdd (nameTask){
     return li;  
 }
 
+
+
 function createDiv () {
     return document.createElement('div');
 }
-
-
 
 function openEditor (btnEdit, spanTaskName) {
 
@@ -64,17 +64,24 @@ function openEditor (btnEdit, spanTaskName) {
 
     btnSubmitTask.addEventListener('click', () => editTask(spanTaskName, inputNameTaskModal));
 
+    console.log(btnEdit, spanTaskName);
+
     
 }
 
 function editTask (taskName, input){
 
     taskName.textContent = input.value;
+    console.log(taskName);
 
     let divModal = input.parentNode.parentNode.parentNode;
+    console.log(divModal);
+
     let date = divModal.children[0].children[2].children[0].value;
+    console.log(date);
 
     let task = taskName.parentNode;
+    console.log(task);
 
     let divTodos = document.querySelector('.todos');
 
@@ -88,6 +95,8 @@ function editTask (taskName, input){
         divTodos.children[0].appendChild(task);
 
     setModalToNone(divModal);
+
+    taskName = ' ';
 }
 
 function whatToDoWithDate (date, task) {
