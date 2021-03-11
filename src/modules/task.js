@@ -1,7 +1,11 @@
 let btnTrashs = document.querySelectorAll('.btnRemove');
+let btnPencils = document.querySelectorAll('.btnPencil');
+
 //let divTodos = document.querySelector('.todos');
 
 function taskAdd (nameTask){
+
+    
 
     let li = document.createElement('li');
     let divChecked = document.createElement('div');
@@ -24,6 +28,7 @@ function taskAdd (nameTask){
 
     divChecked.classList.add('checked');
     btnTrash.classList.add('btnRemove');
+    btnEdit.classList.add('btnPencil');
     iCircle.classList.add('fa', 'fa-circle-o');
     iPencil.classList.add('fa','fa-pencil');
     iTrash.classList.add('fa','fa-trash');
@@ -34,12 +39,15 @@ function taskAdd (nameTask){
 
     taskRemove(btnTrash);
 
-    openEditor(btnEdit, spanName);
+    //openEditor(btnEdit, spanName);
     
     setInputToNone();
     
+    
     return li;  
+    
 }
+
 
 
 
@@ -49,29 +57,26 @@ function createDiv () {
 
 function openEditor (btnEdit, spanTaskName) {
 
-    let modal = document.querySelector('.modal');
-    let inputNameTaskModal = modal.children[0].children[0].children[0];
-    let btnSubmitTask  = document.querySelector('#btnSubmitTask');
-
+    //console.log(spanTaskName);
     btnEdit.addEventListener('click', () => {
+
+        let modal = document.querySelector('.modal');
+        let inputNameTaskModal = modal.children[0].children[0].children[0];
+        let btnSubmitTask  = document.querySelector('#btnSubmitTask');
 
         setModalToBlock(modal);
         putNameOnModalInputName(inputNameTaskModal, spanTaskName);
+        btnSubmitTask.addEventListener('click', () => editTask(spanTaskName, inputNameTaskModal));
 
 
     }); 
-    
-
-    btnSubmitTask.addEventListener('click', () => editTask(spanTaskName, inputNameTaskModal));
-
-    console.log(btnEdit, spanTaskName);
-
-    
 }
+
+
 
 function editTask (taskName, input){
 
-    taskName.textContent = input.value;
+    //taskName.textContent = input.value;
     console.log(taskName);
 
     let divModal = input.parentNode.parentNode.parentNode;
@@ -96,7 +101,8 @@ function editTask (taskName, input){
 
     setModalToNone(divModal);
 
-    taskName = ' ';
+    taskName = null;
+    task = null;
 }
 
 function whatToDoWithDate (date, task) {
