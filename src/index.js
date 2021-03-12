@@ -11,7 +11,7 @@ let btnPencils = document.querySelector('.btnPencil');
 btn.addEventListener('click', ()=> {
 
     if (inputAddText.value != '')
-        divTodos.append(taskAdd(inputAddText.value));
+        taskAdd(inputAddText.value);
         
     console.log(btnPencils)
     
@@ -19,5 +19,5 @@ btn.addEventListener('click', ()=> {
 });
 
 
-btnPencils.forEach(btn => btn.addEventListener('click', () => console.log('alou')));
+
 

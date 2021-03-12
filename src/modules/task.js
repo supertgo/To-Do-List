@@ -1,5 +1,6 @@
 let btnTrashs = document.querySelectorAll('.btnRemove');
 let btnPencils = document.querySelectorAll('.btnPencil');
+const divTodos = document.querySelector('.todos');
 
 //let divTodos = document.querySelector('.todos');
 
@@ -37,15 +38,18 @@ function taskAdd (nameTask){
     btnEdit.appendChild(iPencil);
     btnTrash.appendChild(iTrash);
 
-    taskRemove(btnTrash);
+    
 
-    //openEditor(btnEdit, spanName);
+    //taskRemove(btnTrash);
+
+
+
+    divTodos.append(openEditor(spanName, btnEdit));
     
     setInputToNone();
-    
-    
-    return li;  
-    
+
+    //divTodos.append(li);
+        
 }
 
 
@@ -55,21 +59,26 @@ function createDiv () {
     return document.createElement('div');
 }
 
-function openEditor (btnEdit, spanTaskName) {
+function openEditor (spanTaskName, btnEdit) {
 
-    //console.log(spanTaskName);
+    let modal = document.querySelector('.modal');
+
+    
     btnEdit.addEventListener('click', () => {
 
-        let modal = document.querySelector('.modal');
+        
         let inputNameTaskModal = modal.children[0].children[0].children[0];
         let btnSubmitTask  = document.querySelector('#btnSubmitTask');
 
         setModalToBlock(modal);
         putNameOnModalInputName(inputNameTaskModal, spanTaskName);
-        btnSubmitTask.addEventListener('click', () => editTask(spanTaskName, inputNameTaskModal));
+        btnSubmitTask.addEventListener('click',  editTask(spanTaskName, inputNameTaskModal));
+        
 
-
+        
     }); 
+
+    
 }
 
 
@@ -99,10 +108,9 @@ function editTask (taskName, input){
     else 
         divTodos.children[0].appendChild(task);
 
-    setModalToNone(divModal);
+   
 
-    taskName = null;
-    task = null;
+    
 }
 
 function whatToDoWithDate (date, task) {
@@ -177,13 +185,9 @@ const putNameOnModalInputName  = (input, name) => {
 function taskRemove (btn){
 
     let task = btn.parentNode.parentNode;
+    let todos = document.querySelector('.todos');
 
-    btn.addEventListener('click', () => {
-
-        let todos = document.querySelector('.todos');
-        todos.removeChild(task);
-
-    });
+    btn.addEventListener('click', todos.remove(task));
     
 }
 
