@@ -13,10 +13,12 @@ btn.addEventListener('click', ()=> {
     if (inputAddText.value != '')
         taskAdd(inputAddText.value);
         
-    console.log(btnPencils)
     
+    //console.log(divTodos.children[0]);
     
 });
+
+
 
 
 

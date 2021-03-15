@@ -1,12 +1,21 @@
 let btnTrashs = document.querySelectorAll('.btnRemove');
 let btnPencils = document.querySelectorAll('.btnPencil');
 const divTodos = document.querySelector('.todos');
+const toDoList = document.querySelector('.todo-list');
+const listName = document.querySelector('.select');
+const defaultListDiv = document.querySelector('#myList');
 
-//let divTodos = document.querySelector('.todos');
 
-function taskAdd (nameTask){
+let list = createList(listName.textContent);
 
-    
+
+
+
+function taskAdd (){
+    defaultListDiv.appendChild(taskCreate());
+}
+
+function taskCreate (){
 
     let li = document.createElement('li');
     let divChecked = document.createElement('div');
@@ -18,7 +27,7 @@ function taskAdd (nameTask){
     let iPencil = document.createElement('i');
     let iTrash = document.createElement('i');
 
-    spanName.textContent = nameTask;
+    spanName.textContent = getValueOfInputTaskAdd();
 
     li.appendChild(divChecked);
     divChecked.appendChild(btnEdit);
@@ -26,6 +35,8 @@ function taskAdd (nameTask){
     li.appendChild(div);
     div.appendChild(btnEdit);
     div.appendChild(btnTrash);
+
+    li.id = Date.now().toString();
 
     divChecked.classList.add('checked');
     btnTrash.classList.add('btnRemove');
@@ -38,78 +49,70 @@ function taskAdd (nameTask){
     btnEdit.appendChild(iPencil);
     btnTrash.appendChild(iTrash);
 
-    
-
-    //taskRemove(btnTrash);
-
-
-
-    divTodos.append(openEditor(spanName, btnEdit));
-    
     setInputToNone();
 
-    //divTodos.append(li);
-        
+    list.tasks.push(li);
+
+    renderTask();
+    return li;
 }
 
 
-
-
-function createDiv () {
-    return document.createElement('div');
+function renderTask () {
+    list.tasks.forEach((task) => {
+        const btnEdit = task.children[2].children[0];
+    
+        btnEdit.addEventListener('click', ()=> {
+            openEditor(task);
+        })
+    });
 }
 
-function openEditor (spanTaskName, btnEdit) {
+
+const getValueOfInputTaskAdd = () => {
+
+    return document.querySelector('#inputAddTask').value;
+}
+
+
+function createList (listName) {
+    return {id: Date.now(), name: listName, tasks: []}
+}
+
+function openEditor (task) {
 
     let modal = document.querySelector('.modal');
 
+    setModalToBlock(modal);
+
+    editTask(task, modal);
+
+    document.querySelector('#btnSubmitTask').addEventListener('click', () => setModalToNone(modal));
+
     
-    btnEdit.addEventListener('click', () => {
-
-        
-        let inputNameTaskModal = modal.children[0].children[0].children[0];
-        let btnSubmitTask  = document.querySelector('#btnSubmitTask');
-
-        setModalToBlock(modal);
-        putNameOnModalInputName(inputNameTaskModal, spanTaskName);
-        btnSubmitTask.addEventListener('click',  editTask(spanTaskName, inputNameTaskModal));
-        
-
-        
-    }); 
-
     
 }
 
-
-
-function editTask (taskName, input){
+const editTask = (task, modal) => {
 
     //taskName.textContent = input.value;
-    console.log(taskName);
-
-    let divModal = input.parentNode.parentNode.parentNode;
-    console.log(divModal);
-
-    let date = divModal.children[0].children[2].children[0].value;
-    console.log(date);
-
-    let task = taskName.parentNode;
     console.log(task);
-
-    let divTodos = document.querySelector('.todos');
-
-    //verficar 
-    
-    //criar 
-    if (date != '')
-        whatToDoWithDate(date, task);
-    
-    else 
-        divTodos.children[0].appendChild(task);
 
    
 
+    let date = modal.children[0].children[2].children[0].value;
+    
+
+    console.log(date);
+
+    /*if (date != '')
+        whatToDoWithDate(date, task);
+    
+    else 
+        divTodos.append(task);
+
+   
+    setModalToNone(divModal);*/
     
 }
 
@@ -184,10 +187,14 @@ const putNameOnModalInputName  = (input, name) => {
 
 function taskRemove (btn){
 
+    
     let task = btn.parentNode.parentNode;
-    let todos = document.querySelector('.todos');
+    console.log(task);
 
-    btn.addEventListener('click', todos.remove(task));
+    btn.addEventListener('click', 
+        
+        toDoList.remove(task)
+    );
     
 }
 
@@ -197,6 +204,6 @@ function setInputToNone  () {
     inputAddText.value = ' ';
 }
 
-
+renderTask();
 
 export default taskAdd;
