@@ -10,9 +10,7 @@ body {
     margin: 0;
 }
 
-header {
-    
-}
+
 
 main {
  
@@ -111,6 +109,11 @@ option {
     align-items: center;
 }
 
+.todos ul{
+    list-style: none;
+    padding-inline-start: 0;
+}
+
 .todos li button {
     border-radius: 12px;
     width: 38px;
@@ -123,9 +126,6 @@ option {
 
 .todos .checked {
     cursor: pointer;
-}
-footer {
-    
 }
 
 .modal {
