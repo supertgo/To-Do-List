@@ -16,48 +16,33 @@
                 
         </header>
         <main>
-            <div class="lists">
-                <div class="lists-select">
-                    <span class="select">Lists</span>
-                    <i class="fa fa-caret-down icon"></i>
-                </div>
 
-                <div class="lists-list">
-                    <div class="lists-list__item">Teste</div>
-                    <div class="lists-list__item">Coca</div>
-                    <div class="lists-list__item">Teste</div>
+            <div id="projects">
+                <div class="top">
+                    <h2>projects</h2>
+                    <button id="btnAddProject"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </div>
             </div>
-           <div class="top">
-               <input type="text" name="" id="inputAddTask" placeholder="Type the task Name">
 
-               <button id = "btnAddTask">
-                   <i class="fa fa-plus"></i>
-               </button>
-           </div>
-
-           <div class="todos">
-               <div id="myList"></div>
-                
-           </div>
-
+            <div id="tasks">
+                <div class="top">
+                    <h2>projects</h2>
+                    <button id="btnAddTask"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                </div>
+            </div>
+       
            <div class="modal">
             
-            <form id="addTask">
-                <!-- nome da tarefa -->
+            <form id="taskForm">
                 <label> 
                     <input type="text" placeholder="Task Name">
                 </label>
-            
-                <!-- detalhes -->
                 <label for="">
                     <textarea name=""  cols="31" rows="6" placeholder="Add details"></textarea>
                 </label>
-                <!-- data -->
                 <label> 
                     <input type="date" name="date" id="date">
                 </label> 
-                <!-- prioridade --> 
 
                 <label for="priority">Priority
                     <select name="priority" id="priority">
@@ -69,8 +54,6 @@
                         <option value="D">D</option>
                     </select>
                  </label>
-                <!-- funcao de repetir -->
-                 
                  <input type="button" id="btnSubmitTask" value="Submit">
             </form>
         </div>

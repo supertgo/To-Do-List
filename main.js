@@ -7,89 +7,26 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_task_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/task.js */ \"./src/modules/task.js\");\n\n\nlet inputAddText = document.querySelector('#inputAddTask');\nconst btn = document.querySelector(\"#btnAddTask\");\nconst divTodos = document.querySelector('.todos');\nconst modal = document.querySelector('.modal');\nlet btnPencils = document.querySelector('.btnPencil');\n\n\n\nbtn.addEventListener('click', ()=> {\n\n    if (inputAddText.value != '')\n        (0,_modules_task_js__WEBPACK_IMPORTED_MODULE_0__.default)(inputAddText.value);\n        \n    \n    //console.log(divTodos.children[0]);\n    \n});\n\n\n\n\n\n\n\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/modules/task.js":
-/*!*****************************!*\
-  !*** ./src/modules/task.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nlet btnTrashs = document.querySelectorAll('.btnRemove');\nlet btnPencils = document.querySelectorAll('.btnPencil');\nconst divTodos = document.querySelector('.todos');\nconst toDoList = document.querySelector('.todo-list');\nconst listName = document.querySelector('.select');\nconst defaultListDiv = document.querySelector('#myList');\n\n\nlet list = createList(listName.textContent);\n\n\n\n\nfunction taskAdd (){\n    defaultListDiv.appendChild(taskCreate());\n}\n\nfunction taskCreate (){\n\n    let li = document.createElement('li');\n    let divChecked = document.createElement('div');\n    let spanName = document.createElement('span');\n    let div = document.createElement('div');\n    let btnEdit = document.createElement('button');\n    let btnTrash = document.createElement('button');\n    let iCircle = document.createElement('i');\n    let iPencil = document.createElement('i');\n    let iTrash = document.createElement('i');\n\n    spanName.textContent = getValueOfInputTaskAdd();\n\n    li.appendChild(divChecked);\n    divChecked.appendChild(btnEdit);\n    li.appendChild(spanName);\n    li.appendChild(div);\n    div.appendChild(btnEdit);\n    div.appendChild(btnTrash);\n\n    li.id = Date.now().toString();\n\n    divChecked.classList.add('checked');\n    btnTrash.classList.add('btnRemove');\n    btnEdit.classList.add('btnPencil');\n    iCircle.classList.add('fa', 'fa-circle-o');\n    iPencil.classList.add('fa','fa-pencil');\n    iTrash.classList.add('fa','fa-trash');\n\n    divChecked.appendChild(iCircle);\n    btnEdit.appendChild(iPencil);\n    btnTrash.appendChild(iTrash);\n\n    setInputToNone();\n\n    list.tasks.push(li);\n\n    renderTask();\n    return li;\n}\n\n\nfunction renderTask () {\n    list.tasks.forEach((task) => {\n        const btnEdit = task.children[2].children[0];\n    \n        btnEdit.addEventListener('click', ()=> {\n            openEditor(task);\n        })\n    });\n}\n\n\nconst getValueOfInputTaskAdd = () => {\n\n    return document.querySelector('#inputAddTask').value;\n}\n\n\nfunction createList (listName) {\n    return {id: Date.now(), name: listName, tasks: []}\n}\n\nfunction openEditor (task) {\n\n    let modal = document.querySelector('.modal');\n\n    setModalToBlock(modal);\n\n    editTask(task, modal);\n\n    document.querySelector('#btnSubmitTask').addEventListener('click', () => setModalToNone(modal));\n\n    \n    \n}\n\nconst editTask = (task, modal) => {\n\n    //taskName.textContent = input.value;\n    console.log(task);\n\n   \n\n    let date = modal.children[0].children[2].children[0].value;\n    \n\n    console.log(date);\n\n    /*if (date != '')\n        whatToDoWithDate(date, task);\n    \n    else \n        divTodos.append(task);\n\n   \n    setModalToNone(divModal);*/\n    \n}\n\nfunction whatToDoWithDate (date, task) {\n\n    if (!verifyDate(date)) insertNewDiv(date);\n\n    addTaskToContainer(task, date);\n}\n\nconst addTaskToContainer =  (task, date) => {\n\n    let divTodos = document.querySelector('.todos');\n\n    let index = searchForIdByDiv(divTodos, date);\n\n    if (index != -1)\n        divTodos.children[index].appendChild(task);\n\n    else \n        console.log('error');\n}\n\nconst searchForIdByDiv = (div, date) => {\n\n    for (let i = 0; i < div.childElementCount; i++)\n        if (div.children[i].id == date) return i;\n\n    return  -1;\n}\n\nconst verifyDate = (taskDate) => {\n\n    let divTodos = document.querySelector('.todos');\n\n    for (let i = 0; i < divTodos.childElementCount; i++)\n        if (divTodos.children[i].id == taskDate) return true;\n\n    return false;\n    \n}\n\nconst insertNewDiv = (date) => {\n\n    let div = createDiv()\n    div.id  = date;\n    div.append(insertH4WithDateName(date));\n\n    document.querySelector('.todos').append(div);\n}\n\nconst insertH4WithDateName = (date) => {\n    \n    let h4 = document.createElement('h4');\n    h4.textContent = date;\n\n    return h4;\n\n}\n\nconst setModalToBlock = (modal) => {\n\n    modal.style.display= 'block';\n}\n\nconst setModalToNone = (modal) => {\n    modal.style.display = 'none';\n}\nconst putNameOnModalInputName  = (input, name) => {\n    input.value = name.textContent;\n}\n\nfunction taskRemove (btn){\n\n    \n    let task = btn.parentNode.parentNode;\n    console.log(task);\n\n    btn.addEventListener('click', \n        \n        toDoList.remove(task)\n    );\n    \n}\n\nfunction setInputToNone  () {\n\n    let inputAddText = document.querySelector('#inputAddTask');\n    inputAddText.value = ' ';\n}\n\nrenderTask();\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (taskAdd);\n\n//# sourceURL=webpack://to-do-list/./src/modules/task.js?");
+eval("\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
 
 /***/ })
 
 /******/ 	});
 /************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		if(__webpack_module_cache__[moduleId]) {
-/******/ 			return __webpack_module_cache__[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./src/index.js"]();
 /******/ 	
 /******/ })()
 ;
