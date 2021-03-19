@@ -11,7 +11,7 @@ body {
 }
 
 
-.modal {
+.modalTask {
 
     background-color: cornflowerblue;
     position: fixed;
@@ -25,11 +25,14 @@ body {
     
 }
 
-.modal input, label {
+.modalTask input, label {
     display: block;
 }
 
-.modal label {
+.modalTask label {
     margin-bottom: 20px;
 }
 
+.modalProject {
+    display: none;
+}
