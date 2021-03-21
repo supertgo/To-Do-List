@@ -12,30 +12,35 @@
     </head>
 
     <body>
-        <header>
-                
-        </header>
+        <h1>To Do List</h1>
         <main>
-
+             
             <div id="projects">
                 <div class="top">
-                    <h2>projects</h2>
+                    <h2>Projects</h2>
+                    <input type="text" name="" id="inputProject">
                     <button id="btnAddProject"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </div>
             </div>
-
+            
+        
             <div id="tasks">
                 <div class="top">
                     <h2>Tasks</h2>
+                    <input type="text" id="inputTask">
                     <button id="btnAddTask"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </div>
+
+                <div id="todos"></div>
+
+                
             </div>
        
            <div class="modalTask">
             
             <form id="taskForm">
                 <label> 
-                    <input type="text" placeholder="Task Name">
+                    <input type="text" placeholder="Task Name" id="inputTaskName">
                 </label>
                 <label for="">
                     <textarea name=""  cols="31" rows="6" placeholder="Add details"></textarea>
