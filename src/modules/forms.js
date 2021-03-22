@@ -16,10 +16,14 @@ const taskForm = (() => {
 
     const modalTask = document.querySelector('.modalTask');
     const submit = document.querySelector('#btnSubmitTask');
+    const inputTask = document.querySelector('#inputTask');
     const name = document.querySelector('#inputTaskName');
-
-
+    const date = document.querySelector('#date');
+    const description = document.querySelector('#description');
+   
+    
     const show = () => {
+        _setInputName();
         modalTask.style.display= 'flex';
     }
 
@@ -27,11 +31,12 @@ const taskForm = (() => {
         modalTask.style.display= 'none';
     }
 
+    const _setInputName = () => {
+        name.value = inputTask.value;
+    }
     submit.addEventListener('click', () => {
         _hide();
-
-        //submeter tarefa
-        submitTask(name);
+        submitTask(name.value, description.value, date.value);
     });
 
     return {show}

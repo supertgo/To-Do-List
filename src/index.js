@@ -19,18 +19,18 @@ btnAddProjects.addEventListener('click', function (){
 btnAddTask.addEventListener('click', () => taskForm.show());
 
 
-function submitTask (name) {
+function submitTask (name, description, date) {
 
-    //cria tarefa
-    const newTask = createTask(name);
+    const newTask = createTask(name, description, date);
+    console.log(newTask);
     
-    //passa cria tarefa para o DOM Adcionar
+    
     const newTaskElement = createTaskElement(newTask);
 
     //colocar a tarefa no array de tarefas (projeto, array)
     //addTaskToArray(projects[activeProject], newTask);
 
-    //colocar no DOM
+    
     addTaskToDOM(newTaskElement);
 }
 
