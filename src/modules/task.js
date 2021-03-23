@@ -1,4 +1,6 @@
 //criar objeto tarefa
+
+
 const createTask = (name, description, date, priority) => {
 
     console.log(name);
@@ -7,7 +9,7 @@ const createTask = (name, description, date, priority) => {
         description: description,
         date : date,
         priority: priority,
-        id: Date.now().toString,
+        id: Date.now().toString(),
     }
 }
 //criar elemetno

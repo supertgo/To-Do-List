@@ -18,8 +18,10 @@
             <div id="projects">
                 <div class="top">
                     <h2>Projects</h2>
-                    <input type="text" name="" id="inputProject">
-                    <button id="btnAddProject"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    <select name="" id="listsSelect">
+                        <option value="">myList</option>
+                    </select>
+                    <button id="newList">New List</button>
                 </div>
             </div>
             
@@ -66,7 +68,11 @@
             <div class="modalProject">
                 <form  id="projectForm">
                     <label> 
-                        <input type="text" placeholder="Task Name">
+                        <input type="text" placeholder="Project Name" id="inputProjectName">
+                    </label>
+
+                    <label >
+                        <button id="btnSubmitProject"> Submit</button>
                     </label>
                 </form>
             </div>

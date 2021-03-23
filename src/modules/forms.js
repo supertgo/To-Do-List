@@ -1,12 +1,25 @@
-import {submitTask} from '../index';
+import {submitTask, submitProject} from '../index';
 
 const projectForm = (() => {
 
     const projectForm = document.querySelector('.modalProject');
+    const submit = document.querySelector('#btnSubmitProject');
+    const name = document.querySelector('#inputProjectName');
+
 
     const show = () =>  {
         projectForm.style.display = 'flex';
     }
+
+    const _hide = () => {
+        projectForm.style.display = 'none';
+    }
+
+    submit.addEventListener('click', function (){
+        _hide();
+
+        submitProject(name.value);
+    });
 
     return {show}
 })();
@@ -28,7 +41,13 @@ const taskForm = (() => {
     }
 
     const _hide = () => {
+
+        _resetInput();
         modalTask.style.display= 'none';
+    }
+
+    const _resetInput = () => {
+        inputTask.value = '';
     }
 
     const _setInputName = () => {

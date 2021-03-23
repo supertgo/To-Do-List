@@ -19,7 +19,6 @@ main{
     min-height: 20vh;
     display: flex;
     flex-direction: column;
-    
 }
 
 main input, main button {
@@ -28,6 +27,18 @@ main input, main button {
 
 button {
     border: none;
+}
+.top > input {
+   width: 300px;
+}
+#projects {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+select {
+    width: 100px;
+    padding: 0.3rem;
 }
 
 #todos > li {
@@ -49,10 +60,9 @@ button {
     background: green;
     color: white;
 }
-#projects {
-   
-    display: block;
-}
+
+
+
 
 #tasks > .top > button {
     background: rgb(255, 175, 2);
@@ -80,5 +90,7 @@ button {
 }
 
 .modalProject {
+    transition: ease-in-out;
+    position: absolute;
     display: none;
 }
