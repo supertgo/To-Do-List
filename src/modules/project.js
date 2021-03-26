@@ -1,19 +1,30 @@
-const createProject = () => {return []}
+const createProject = (name) => {
+    return {
+        name: name,
+        tasks: [],
+    }
+}
 
 
-const createElementProject = (name) => {
+function createElementProject (name){
 
     const newProject = document.createElement('option');
-    newProject.value = name;
+    newProject.textContent = name;
 
+   
     return newProject;
 }
 
 
-const appendNewProjectAtDOM  = newProject => {
+const appendNewProjectAtDOM  = (newProject) => {
 
     const listSelector = document.querySelector('#listsSelect');
-    listSelector.add(newProject);
+    
+    listSelector.append(newProject);
 }
 
-export {createProject, createElementProject, appendNewProjectAtDOM}
+
+const appendProjectToArray = (array, newProject) => {
+    array.push(newProject);
+} 
+export {createProject, createElementProject, appendNewProjectAtDOM, appendProjectToArray}

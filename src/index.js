@@ -1,6 +1,6 @@
 import {projectForm, taskForm} from './modules/forms';
 import {createTask, createTaskElement, addTaskToDOM, addTaskToArray} from './modules/task';
-import {createProject, createElementProject, appendNewProjectAtDOM} from './modules/project';
+import {createProject, createElementProject, appendNewProjectAtDOM, appendProjectToArray} from './modules/project';
 
 
 const divProjects = document.querySelector('#projects');
@@ -20,13 +20,15 @@ btnAddTask.addEventListener('click', () => taskForm.show());
 
 function submitProject (name){
     
-    const newProject = createProject();
+    const newProject = createProject(name);
     
-    const projectElement = createElementProject(name);
+    let projectElement = createElementProject(name);
     
     const listSelector = document.querySelector('#listsSelect');
     
-    listSelector.appendChild(projectElement);
+    appendNewProjectAtDOM(projectElement);
+
+    appendProjectToArray(projects, newProject);
 
 
 }
@@ -40,12 +42,21 @@ function submitTask (name, description, date) {
     const newTaskElement = createTaskElement(newTask);
 
     //colocar a tarefa no array de tarefas (projeto, array)
-    //addTaskToArray(projects[activeProject], newTask);
+    //addTaskToArray(projects[activeProject].task, newTask);
 
     
     addTaskToDOM(newTaskElement);
+
+    console.log(getAtualProject())
+    console.log(projects)
+    console.log(projects.indexOf(getAtualProject()))
 }
 
+function getAtualProject () {
+    
+    let selector = document.querySelector('#listsSelect');
 
+    return selector.options[selector.selectedIndex].value;
+}
 
 export {submitTask, submitProject}

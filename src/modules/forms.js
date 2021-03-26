@@ -15,9 +15,8 @@ const projectForm = (() => {
         projectForm.style.display = 'none';
     }
 
-    submit.addEventListener('click', function (){
+    submit.addEventListener('click', () =>{
         _hide();
-
         submitProject(name.value);
     });
 
