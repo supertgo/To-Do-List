@@ -1,6 +1,6 @@
 import {submitTask, submitProject} from '../index';
 
-const projectForm = (() => {
+export const projectForm = (() => {
 
     const projectForm = document.querySelector('.modalProject');
     const submit = document.querySelector('#btnSubmitProject');
@@ -24,7 +24,7 @@ const projectForm = (() => {
 })();
 
 
-const taskForm = (() => {
+export const taskForm = (() => {
 
     const modalTask = document.querySelector('.modalTask');
     const submit = document.querySelector('#btnSubmitTask');
@@ -61,4 +61,3 @@ const taskForm = (() => {
 })();
 
 
-export {projectForm, taskForm}

@@ -1,7 +1,4 @@
-//criar objeto tarefa
-
-
-const createTask = (name, description, date, priority) => {
+export const createTask = (name, description, date, priority) => {
 
     console.log(name);
     return {
@@ -12,8 +9,8 @@ const createTask = (name, description, date, priority) => {
         id: Date.now().toString(),
     }
 }
-//criar elemetno
-const createTaskElement  = (task) => {
+
+export const createTaskElement  = (task) => {
     
     const li = document.createElement('li');
     const spanName = document.createElement('span');
@@ -26,7 +23,6 @@ const createTaskElement  = (task) => {
     const iCircle = document.createElement('i');
     const iRemove = document.createElement('i');
     const iEdit = document.createElement('i');
-
 
     spanName.textContent = task.name;
     spanDate.textContent = task.date;
@@ -41,8 +37,6 @@ const createTaskElement  = (task) => {
     btnRemove.classList.add('btnRemove');
     btnCheck.classList.add('btnCheck');
 
-
-    
     divChecked.appendChild(btnCheck);
     btnCheck.appendChild(iCircle);
     divButtons.appendChild(btnEdit);
@@ -57,18 +51,15 @@ const createTaskElement  = (task) => {
     _taskRemove(btnRemove);
 
     return li;
-
-
 }
-//addTask
-const addTaskToDOM = (task) => {
+
+export const addTaskToDOM = (task) => {
 
     const divTodos = document.querySelector('#todos');
     divTodos.appendChild(task);
 }
 
-//addTask to array
-const addTaskToArray = (array, task) => {
+export const addTaskToArray = (array, task) => {
     array.push(task);
 }
 
@@ -85,4 +76,3 @@ const _taskRemove  = (btn) => {
     
 }
 
-export{createTask, createTaskElement, addTaskToArray, addTaskToDOM}

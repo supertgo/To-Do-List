@@ -1,12 +1,13 @@
-const createProject = (name) => {
+import {getAtualProject} from '../index';
+
+export const createProject = (name) => {
     return {
         name: name,
         tasks: [],
     }
 }
 
-
-function createElementProject (name){
+export function createElementProject (name){
 
     const newProject = document.createElement('option');
     newProject.textContent = name;
@@ -15,16 +16,29 @@ function createElementProject (name){
     return newProject;
 }
 
-
-const appendNewProjectAtDOM  = (newProject) => {
+export const appendNewProjectAtDOM  = (newProject) => {
 
     const listSelector = document.querySelector('#listsSelect');
     
     listSelector.append(newProject);
 }
 
-
-const appendProjectToArray = (array, newProject) => {
+export const appendProjectToArray = (array, newProject) => {
     array.push(newProject);
 } 
-export {createProject, createElementProject, appendNewProjectAtDOM, appendProjectToArray}
+
+export const getActiveProject = () => {
+
+    let select = document.querySelector('#listsSelect');
+
+    return select.options[select.selectedIndex].textContent;
+}
+
+export const getIndexOfActiveProject = (array) => {
+    let pos = -1;
+
+    array.forEach((item) => {if(item.name == getActiveProject()) pos = array.indexOf(item)})
+
+    return pos
+}
+
