@@ -1,5 +1,3 @@
-import {getAtualProject} from '../index';
-
 export const createProject = (name) => {
     return {
         name: name,

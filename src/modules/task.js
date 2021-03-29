@@ -1,3 +1,6 @@
+import {projects} from '../index';
+import * as Project from './project';
+
 export const createTask = (name, description, date, priority) => {
 
     console.log(name);
@@ -6,6 +9,7 @@ export const createTask = (name, description, date, priority) => {
         description: description,
         date : date,
         priority: priority,
+        checked: false,
         id: Date.now().toString(),
     }
 }
@@ -27,7 +31,7 @@ export const createTaskElement  = (task) => {
     spanName.textContent = task.name;
     spanDate.textContent = task.date;
 
-    divChecked.classList.add('checked');
+    //divChecked.classList.add('checked');
 
     iCircle.classList.add('fa','fa-circle-o');
     iEdit.classList.add('fa','fa-pencil');
@@ -49,6 +53,7 @@ export const createTaskElement  = (task) => {
     li.appendChild(divButtons);
 
     _taskRemove(btnRemove);
+    _checkBtn(btnCheck);
 
     return li;
 }
@@ -75,4 +80,42 @@ const _taskRemove  = (btn) => {
     });
     
 }
+const _checkTask = (taskElement, task) => {
 
+    task.checked = true;
+    taskElement.classList.add('checked');
+    taskElement.classList.remove('unchecked');
+}
+
+const _uncheckTask = (taskElement, task) => {
+
+    task.checked = false;
+    taskElement.classList.add('unchecked');
+    taskElement.classList.remove('checked');
+}
+
+const _checkBtn = (btn) => {
+
+    let taskElement = btn.parentNode.parentNode;
+
+    btn.addEventListener('click', () => {
+
+        let task = returnTaskByName(taskElement.children[1].textContent);
+
+        if(task != null){
+            if (task.checked == false) _checkTask(taskElement, task);
+            else _uncheckTask(taskElement, task);
+        }
+        
+    })
+}
+
+const returnTaskByName = (name) => {
+
+    let task = null;
+    projects[Project.getIndexOfActiveProject(projects)].tasks.forEach((item) => {if (item.name == name) {task = item}})
+
+    return task;
+
+}
+//funcao que pega o projeto atual e procura uma pelo nome

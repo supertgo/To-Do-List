@@ -10,7 +10,9 @@ const btnAddTask = document.querySelector('#btnAddTask');
 const newListBtn = document.querySelector('#newList');
 
 let projects = []; 
-let activeProject = 0;
+Project.appendProjectToArray(projects,Project.createProject('myList'));
+
+
 
 newListBtn.addEventListener('click', () => projectForm.show());
 btnAddTask.addEventListener('click', () => taskForm.show());
@@ -24,8 +26,6 @@ export function submitProject (name){
     
     Project.appendNewProjectAtDOM(projectElement);
     Project.appendProjectToArray(projects, newProject);
-
-
 }
 
 export function submitTask (name, description, date) {
@@ -33,8 +33,8 @@ export function submitTask (name, description, date) {
     const newTask = Task.createTask(name, description, date);
     const newTaskElement = Task.createTaskElement(newTask);
 
-    Task.addTaskToArray(projects[Project.getIndexOfActiveProject(projects)].tasks, newTask);
     Task.addTaskToDOM(newTaskElement);
-
+    Task.addTaskToArray(projects[Project.getIndexOfActiveProject(projects)].tasks, newTask);
 }
 
+export {projects}

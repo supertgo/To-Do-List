@@ -61,7 +61,16 @@ select {
     color: white;
 }
 
+.checked {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
 
+.unchecked {
+
+    text-decoration: none;
+    opacity: 1;
+}
 
 
 #tasks > .top > button {
@@ -74,10 +83,11 @@ select {
     position: fixed;
     top: 50%;
     left: 50%;
-    /* bring your own prefixes */
     transform: translate(-50%, -50%);
     padding: 30px;
-    display: none;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
     
 }
 
@@ -87,8 +97,20 @@ select {
 
 .modalTask label {
     margin-bottom: 20px;
+    
 }
 
+.modalTask input {
+    width: 300px;
+}
+
+.modalTask textarea {
+    width: 300px;
+}
+
+.modalTask select {
+    width: 300px;
+}
 .modalProject {
     transition: ease-in-out;
     position: absolute;
