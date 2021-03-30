@@ -1,5 +1,5 @@
 body {
-    background-image: linear-gradient(120deg, #e2c35d, #d88771);
+    background-image: linear-gradient(120deg, #7834e7, #390065);
     color: rgb(255, 255, 255);
     width: 100vw;
     min-height: 100vh;
@@ -12,6 +12,14 @@ body {
     box-sizing: border-box;
 }
 
+body > h1 {
+    color: blueviolet;
+    padding-left: 10px;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.712);
+    padding: 5px;
+}
 main{
 
     justify-content: center;
@@ -27,6 +35,16 @@ main input, main button {
 
 button {
     border: none;
+    cursor: pointer;
+}
+
+span {
+    text-align: center;
+}
+
+#newList {
+    background-color:rgba(0, 0, 0, 0.35);
+    color: white;
 }
 .top > input {
    width: 300px;
@@ -59,6 +77,8 @@ select {
 .btnCheck {
     background: green;
     color: white;
+    border: none;
+    
 }
 
 .checked {
@@ -71,24 +91,27 @@ select {
     text-decoration: none;
     opacity: 1;
 }
-
-
 #tasks > .top > button {
-    background: rgb(255, 175, 2);
+    background: rgba(0, 0, 0, 0.116);
+    color: white;
+}
+
+#taskForm {
+    color:rgb(97, 53, 255);
 }
 
 .modalTask {
 
-    background-color: cornflowerblue;
+    background-color: rgb(255, 255, 255);
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 30px;
-    display: flex;
+    padding: 20px;
+    display: none;
+    transition: ease-in-out;
     flex-direction: column;
     border-radius: 12px;
-    
 }
 
 .modalTask input, label {
@@ -96,23 +119,48 @@ select {
 }
 
 .modalTask label {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     
 }
-
-.modalTask input {
-    width: 300px;
+.modalTask h1 {
+    text-align: center;
+    padding: 30px;
+    color: rgb(97, 53, 255);
 }
 
-.modalTask textarea {
-    width: 300px;
+.modalTask input, 
+.modalTask textarea,
+.modalTask select  
+{
+    width: 250px;
 }
 
-.modalTask select {
-    width: 300px;
-}
+
 .modalProject {
     transition: ease-in-out;
     position: absolute;
     display: none;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.712);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+}
+
+#btnSubmitTask {
+    border-color:rgb(97, 53, 255);
+}
+footer p {
+    font-size: 1.2rem;
+}
+
+footer span {
+    font-size: 1.7rem;
 }
