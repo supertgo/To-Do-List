@@ -35,7 +35,7 @@ export const getActiveProject = () => {
 export const getIndexOfActiveProject = (array) => {
     let pos = -1;
 
-    array.forEach((item) => {if(item.name == getActiveProject()) pos = array.indexOf(item)})
+    array.forEach((item) =>{if(item.name == getActiveProject()) pos = array.indexOf(item)})
 
     return pos
 }

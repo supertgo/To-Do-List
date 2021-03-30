@@ -118,4 +118,3 @@ const returnTaskByName = (name) => {
     return task;
 
 }
-//funcao que pega o projeto atual e procura uma pelo nome
