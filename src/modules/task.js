@@ -1,9 +1,9 @@
 import {projects} from '../index';
 import * as Project from './project';
+import {editForm} from './forms';
 
 export const createTask = (name, description, date, priority) => {
 
-    console.log(name);
     return {
         name : name,
         description: description,
@@ -54,6 +54,7 @@ export const createTaskElement  = (task) => {
 
     _taskRemove(btnRemove);
     _checkBtn(btnCheck);
+    _editTask(btnEdit);
 
     return li;
 }
@@ -117,4 +118,13 @@ const returnTaskByName = (name) => {
 
     return task;
 
+}
+
+const _editTask = (btn) => {
+
+    let taskElement = btn.parentNode.parentNode;
+
+    btn.addEventListener('click', () => {
+        editForm.show()
+    });
 }

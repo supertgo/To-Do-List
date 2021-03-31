@@ -23,7 +23,6 @@ export function submitProject (name){
     let projectElement = Project.createElementProject(name);
     const listSelector = document.querySelector('#listsSelect');
     
-    
     Project.appendNewProjectAtDOM(projectElement);
     Project.appendProjectToArray(projects, newProject);
 }

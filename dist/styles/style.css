@@ -96,7 +96,7 @@ select {
     color: white;
 }
 
-#taskForm {
+#taskForm, #taskEdit {
     color:rgb(97, 53, 255);
 }
 
@@ -114,23 +114,49 @@ select {
     border-radius: 12px;
 }
 
-.modalTask input, label {
+.modalEdit {
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    display: none;
+    transition: ease-in-out;
+    flex-direction: column;
+    border-radius: 12px;
+}
+
+.modalEdit input {
+    padding: 0.5rem;
+}
+
+.modalTask input, label,
+.modalEdit input
+{
     display: block;
 }
 
-.modalTask label {
+.modalTask label,
+.modalEdit label
+{
     margin-bottom: 30px;
-    
 }
-.modalTask h1 {
+
+.modalTask h1,
+.modalEdit h1
+{
     text-align: center;
     padding: 30px;
     color: rgb(97, 53, 255);
 }
 
 .modalTask input, 
+.modalEdit input,
 .modalTask textarea,
-.modalTask select  
+.modalEdit textarea,
+.modalTask select,
+.modalEdit select
 {
     width: 250px;
 }
@@ -141,6 +167,7 @@ select {
     position: absolute;
     display: none;
 }
+
 
 footer {
     position: fixed;
