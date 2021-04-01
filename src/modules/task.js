@@ -111,7 +111,7 @@ const _checkBtn = (btn) => {
     })
 }
 
-const returnTaskByName = (name) => {
+export const returnTaskByName = (name) => {
 
     let task = null;
     projects[Project.getIndexOfActiveProject(projects)].tasks.forEach((item) => {if (item.name == name) {task = item}})
@@ -124,7 +124,9 @@ const _editTask = (btn) => {
 
     let taskElement = btn.parentNode.parentNode;
 
+    console.log(taskElement);
     btn.addEventListener('click', () => {
-        editForm.show()
+        editForm(taskElement.children[1]).show();
+
     });
 }

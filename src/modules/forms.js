@@ -1,4 +1,6 @@
 import {submitTask, submitProject} from '../index';
+import returnTaskByName from './task';
+
 
 export const projectForm = (() => {
 
@@ -60,7 +62,7 @@ export const taskForm = (() => {
     return {show}
 })();
 
-export const editForm = (() => {
+export const editForm = (taskName) => {
 
     const div = document.querySelector('.modalEdit');
     const submit = document.querySelector('#btnSubmitNewTask');
@@ -68,14 +70,17 @@ export const editForm = (() => {
     const name = document.querySelector('#inputNewTaskName');
     const date = document.querySelector('#newTaskDate');
     const description = document.querySelector('#newDescription');
+   
+    
+    console.log(taskName)
 
-    const show = (taskName) => {
-        _setInputName(taskName);
+    const show = () => {
+        _setInputName(taskName.textContent);
         div.style.display= 'flex';
     }
 
     const _hide = () => {
-        _resetInput();
+        //_resetInput();
         div.style.display= 'none';
     }
 
@@ -87,12 +92,36 @@ export const editForm = (() => {
         name.value = taskName;
     }
 
+    const _copyValues =  () => {
+
+        task.name = name;
+        task.description = description;
+        task.date = date;
+
+    }
+    const _updateTask = () => {
+      let a = returnTaskByName();
+
+      console.log(a);
+    }
+
+    const _updateElement = () => {
+
+        task.children[1].textContent = name;
+        task.children[2].textContent = date.value;
+    }
+    //mudar no objeto e no elemento
     submit.addEventListener('click', () => {
-        _hide();
         
+        console.log(taskName)
+        _updateTask(taskName);
+
+
+        _updateElement();
+        _hide();
     });
 
     return {show}
-});
+};
 
 
