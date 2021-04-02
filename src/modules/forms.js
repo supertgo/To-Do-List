@@ -1,5 +1,5 @@
 import {submitTask, submitProject} from '../index';
-import returnTaskByName from './task';
+import {returnTaskByName} from './task';
 
 
 export const projectForm = (() => {
@@ -11,6 +11,7 @@ export const projectForm = (() => {
 
     const show = () =>  {
         projectForm.style.display = 'flex';
+        
     }
 
     const _hide = () => {
@@ -19,7 +20,9 @@ export const projectForm = (() => {
 
     submit.addEventListener('click', () =>{
         _hide();
-        submitProject(name.value);
+
+        if (name != ' ')
+            submitProject(name.value);
     });
 
     return {show}
@@ -56,7 +59,10 @@ export const taskForm = (() => {
     }
     submit.addEventListener('click', () => {
         _hide();
-        submitTask(name.value, description.value, date.value);
+        
+
+        if (name.value != '')
+            submitTask(name.value, description.value, date.value);
     });
 
     return {show}
@@ -92,33 +98,33 @@ export const editForm = (taskName) => {
         name.value = taskName;
     }
 
-    const _copyValues =  () => {
+    const _copyValues =  (task) => {
 
-        task.name = name;
-        task.description = description;
-        task.date = date;
+        task.name = name.value;
+        task.description = description.value;
+        task.date = date.value;
+
+        console.log(task);
 
     }
-    const _updateTask = () => {
-      let a = returnTaskByName();
-
-      console.log(a);
+    const _updateTask = (name) => {
+        _copyValues(returnTaskByName(name));
     }
 
-    const _updateElement = () => {
+    const _updateElement = (task) => {
 
-        task.children[1].textContent = name;
+        if (name != '')
+            task.children[1].textContent = name.value;
         task.children[2].textContent = date.value;
+
     }
-    //mudar no objeto e no elemento
+    
     submit.addEventListener('click', () => {
-        
-        console.log(taskName)
-        _updateTask(taskName);
 
-
-        _updateElement();
+        _updateTask(taskName.textContent);
+        _updateElement(taskName.parentNode);
         _hide();
+
     });
 
     return {show}
