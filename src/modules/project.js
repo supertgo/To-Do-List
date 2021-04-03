@@ -1,3 +1,7 @@
+import {projects} from '../index';
+import * as Task from './task';
+
+
 export const createProject = (name) => {
     return {
         name: name,
@@ -10,7 +14,6 @@ export function createElementProject (name){
     const newProject = document.createElement('option');
     newProject.textContent = name;
 
-   
     return newProject;
 }
 
@@ -40,3 +43,20 @@ export const getIndexOfActiveProject = (array) => {
     return pos
 }
 
+export const updateTasksOfActiveProject = () => {
+    
+    let project = projects[getIndexOfActiveProject(projects)];
+    let divTasks = document.querySelector('#todos');
+
+    for (let child of divTasks.children) child.remove()
+
+    project.tasks.forEach((task) => {Task.addTaskToDOM(Task.createTaskElement(task))})
+}
+
+export const render = (array) => {
+
+    array.forEach (project => {
+        if (project.name != 'myList')
+            appendNewProjectAtDOM(createElementProject(project.name));
+    });
+}

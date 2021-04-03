@@ -1,4 +1,4 @@
-import {projects} from '../index';
+import {projects, saveStorage} from '../index';
 import * as Project from './project';
 import {editForm} from './forms';
 
@@ -61,8 +61,7 @@ export const createTaskElement  = (task) => {
 
 export const addTaskToDOM = (task) => {
 
-    const divTodos = document.querySelector('#todos');
-    divTodos.appendChild(task);
+    document.querySelector('#todos').appendChild(task);
 }
 
 export const addTaskToArray = (array, task) => {
@@ -80,12 +79,16 @@ const _taskRemove  = (btn) => {
 
     });
     
+    
+    saveStorage();
+
 }
 const _checkTask = (taskElement, task) => {
 
     task.checked = true;
     taskElement.classList.add('checked');
     taskElement.classList.remove('unchecked');
+
 }
 
 const _uncheckTask = (taskElement, task) => {
@@ -109,6 +112,8 @@ const _checkBtn = (btn) => {
         }
         
     })
+
+    saveStorage();
 }
 
 export const returnTaskByName = (name) => {
@@ -124,7 +129,6 @@ const _editTask = (btn) => {
 
     let taskElement = btn.parentNode.parentNode;
 
-    console.log(taskElement);
     btn.addEventListener('click', () => {
         editForm(taskElement.children[1]).show();
 

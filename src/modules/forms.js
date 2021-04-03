@@ -81,21 +81,22 @@ export const editForm = (taskName) => {
     console.log(taskName)
 
     const show = () => {
-        _setInputName(taskName.textContent);
+        _setInputs(returnTaskByName(taskName.textContent));
         div.style.display= 'flex';
     }
 
     const _hide = () => {
-        //_resetInput();
         div.style.display= 'none';
     }
-
+    
     const _resetInput = () => {
         inputTask.value = '';
     }
 
-    const _setInputName = (taskName) => {
-        name.value = taskName;
+    const _setInputs = (task) => {
+        name.value = task.name;
+        description.value = task.description;
+        date.value = task.date;
     }
 
     const _copyValues =  (task) => {
@@ -103,9 +104,6 @@ export const editForm = (taskName) => {
         task.name = name.value;
         task.description = description.value;
         task.date = date.value;
-
-        console.log(task);
-
     }
     const _updateTask = (name) => {
         _copyValues(returnTaskByName(name));
