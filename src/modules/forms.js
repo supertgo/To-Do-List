@@ -78,7 +78,7 @@ export const editForm = (taskName) => {
     const description = document.querySelector('#newDescription');
    
     
-    console.log(taskName)
+    
 
     const show = () => {
         _setInputs(returnTaskByName(taskName.textContent));
@@ -88,7 +88,7 @@ export const editForm = (taskName) => {
     const _hide = () => {
         div.style.display= 'none';
     }
-    
+
     const _resetInput = () => {
         inputTask.value = '';
     }

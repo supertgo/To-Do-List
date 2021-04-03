@@ -77,10 +77,15 @@ const _taskRemove  = (btn) => {
         const divTodos = document.querySelector('#todos');
         divTodos.removeChild(task);
 
+        let array = projects[Project.getIndexOfActiveProject(projects)].tasks;
+    
+        array.splice(array.indexOf(returnTaskByName(task.children[1].textContent)), 1);
+        
+        saveStorage();
     });
     
     
-    saveStorage();
+    
 
 }
 const _checkTask = (taskElement, task) => {
