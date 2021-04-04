@@ -13,6 +13,6 @@ This is a task project  at <a href = 'https://www.theodinproject.com/'  target='
 
 ###How it works
 
-On the button next to the select element, you can create another list.
-To add a new task, just type on the main input and click on the button next it.
-The list is saved on the local storage so if  the history is cleared, the whole site also will be cleared.
+<li> On the button next to the select element, you can create another list. </li>
+<li> To add a new task, just type on the main input and click on the button next it. </li>
+<li> The list is saved on the local storage so if  the history is cleared, the whole site also will be cleared. </li>
