@@ -57,7 +57,9 @@ export const createTaskElement  = (task) => {
     return li;
 }
 
-export const addTaskToDOM = (task) => { document.querySelector('#todos').appendChild(task); }
+export const addTaskToDOM = (task) => { 
+    document.querySelector('#todos').appendChild(task);
+}
 
 export const addTaskToArray = (array, task) => { array.push(task); }
 
@@ -71,18 +73,18 @@ const _taskRemove  = (btn) => {
         divTodos.removeChild(task);
 
         let array = projects[Project.getIndexOfActiveProject(projects)].tasks;
-    
         array.splice(array.indexOf(returnTaskByName(task.children[1].textContent)), 1);
         
         saveStorage();
     });
-}
 
+}
 const _checkTask = (taskElement, task) => {
 
     task.checked = true;
     taskElement.classList.add('checked');
     taskElement.classList.remove('unchecked');
+
 }
 
 const _uncheckTask = (taskElement, task) => {
@@ -106,6 +108,7 @@ const _checkBtn = (btn) => {
         }
         
     })
+
     saveStorage();
 }
 
@@ -115,6 +118,7 @@ export const returnTaskByName = (name) => {
     projects[Project.getIndexOfActiveProject(projects)].tasks.forEach((item) => {if (item.name == name) {task = item}})
 
     return task;
+
 }
 
 const _editTask = (btn) => {

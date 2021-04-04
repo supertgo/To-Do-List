@@ -45,8 +45,8 @@ export const updateTasksOfActiveProject = () => {
     let project = projects[getIndexOfActiveProject(projects)];
     let divTasks = document.querySelector('#todos');
 
-    for (let i = 0; i < divTasks.childElementCount; i++) {
-        divTasks.remove(divTasks.children[i]);
+    while (divTasks.childElementCount != 0){
+        divTasks.removeChild(divTasks.lastChild);
     }
 
     project.tasks.forEach((task) => {Task.addTaskToDOM(Task.createTaskElement(task))})
