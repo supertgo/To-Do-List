@@ -31,8 +31,6 @@ export const createTaskElement  = (task) => {
     spanName.textContent = task.name;
     spanDate.textContent = task.date;
 
-    //divChecked.classList.add('checked');
-
     iCircle.classList.add('fa','fa-circle-o');
     iEdit.classList.add('fa','fa-pencil');
     iRemove.classList.add('fa','fa-trash');
@@ -59,14 +57,9 @@ export const createTaskElement  = (task) => {
     return li;
 }
 
-export const addTaskToDOM = (task) => {
+export const addTaskToDOM = (task) => { document.querySelector('#todos').appendChild(task); }
 
-    document.querySelector('#todos').appendChild(task);
-}
-
-export const addTaskToArray = (array, task) => {
-    array.push(task);
-}
+export const addTaskToArray = (array, task) => { array.push(task); }
 
 const _taskRemove  = (btn) => {
 
@@ -83,17 +76,13 @@ const _taskRemove  = (btn) => {
         
         saveStorage();
     });
-    
-    
-    
-
 }
+
 const _checkTask = (taskElement, task) => {
 
     task.checked = true;
     taskElement.classList.add('checked');
     taskElement.classList.remove('unchecked');
-
 }
 
 const _uncheckTask = (taskElement, task) => {
@@ -117,7 +106,6 @@ const _checkBtn = (btn) => {
         }
         
     })
-
     saveStorage();
 }
 
@@ -127,7 +115,6 @@ export const returnTaskByName = (name) => {
     projects[Project.getIndexOfActiveProject(projects)].tasks.forEach((item) => {if (item.name == name) {task = item}})
 
     return task;
-
 }
 
 const _editTask = (btn) => {

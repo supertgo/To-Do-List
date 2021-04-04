@@ -1,7 +1,6 @@
 import {projects} from '../index';
 import * as Task from './task';
 
-
 export const createProject = (name) => {
     return {
         name: name,
@@ -24,9 +23,7 @@ export const appendNewProjectAtDOM  = (newProject) => {
     listSelector.append(newProject);
 }
 
-export const appendProjectToArray = (array, newProject) => {
-    array.push(newProject);
-} 
+export const appendProjectToArray = (array, newProject) => { array.push(newProject); } 
 
 export const getActiveProject = () => {
 
@@ -47,7 +44,7 @@ export const updateTasksOfActiveProject = () => {
     
     let project = projects[getIndexOfActiveProject(projects)];
     let divTasks = document.querySelector('#todos');
-    console.log(divTasks.children);
+
     for (let i = 0; i < divTasks.childElementCount; i++) {
         divTasks.remove(divTasks.children[i]);
     }

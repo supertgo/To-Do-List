@@ -2,18 +2,13 @@ import {projectForm, taskForm} from './modules/forms';
 import * as Task from './modules/task';
 import * as Project  from './modules/project';
 
-
-const divProjects = document.querySelector('#projects');
-const divTasks = document.querySelector('#taks');
-const btnAddProjects = document.querySelector('#btnAddProject');
 const btnAddTask = document.querySelector('#btnAddTask');
 const newListBtn = document.querySelector('#newList');
 const select = document.querySelector('#listsSelect');
 
 let projects = []; 
 
-
-select.addEventListener('change', ()=> {
+select.addEventListener('change', () => {
     Project.updateTasksOfActiveProject();
 })
 
@@ -44,7 +39,6 @@ export function submitTask (name, description, date) {
     saveStorage();
 }
 
-
 function storage (){
 
     if (localStorage.MyList){
@@ -60,9 +54,7 @@ function storage (){
     }
 }
 
-export function saveStorage () {
-    localStorage.setItem('MyList', JSON.stringify(projects));
-}
+export function saveStorage () { localStorage.setItem('MyList', JSON.stringify(projects))}
 
 function getStorage (){return JSON.parse(localStorage.getItem('MyList'))}
 

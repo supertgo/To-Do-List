@@ -3,7 +3,6 @@ body {
     color: rgb(255, 255, 255);
     width: 100vw;
     min-height: 100vh;
-   
 }
 
 *{
@@ -20,6 +19,7 @@ body > h1 {
     background-color: rgba(0, 0, 0, 0.712);
     padding: 5px;
 }
+
 main{
 
     justify-content: center;
@@ -46,9 +46,11 @@ span {
     background-color:rgba(0, 0, 0, 0.35);
     color: white;
 }
+
 .top > input {
    width: 300px;
 }
+
 #projects {
     margin-top: 5%;
     margin-bottom: 5%;
@@ -78,7 +80,6 @@ select {
     background: green;
     color: white;
     border: none;
-    
 }
 
 .checked {
@@ -91,6 +92,7 @@ select {
     text-decoration: none;
     opacity: 1;
 }
+
 #tasks > .top > button {
     background: rgba(0, 0, 0, 0.116);
     color: white;
@@ -100,77 +102,36 @@ select {
     color:rgb(97, 53, 255);
 }
 
-.modalTask {
-
-    background-color: rgb(255, 255, 255);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    display: none;
-    flex-direction: column;
-    border-radius: 12px;
-    transition: 0.1s ease;
-}
-
-.modalEdit {
-    background-color: rgb(255, 255, 255);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    display: none;
-    transition: ease-in-out;
-    flex-direction: column;
-    border-radius: 12px;
-    transition: 0.1s ease;
-}
-
-.modalEdit input,
-.modalProject input
- {
+.modal input
+{
     padding: 0.5rem;
 }
 
-.modalTask input, label,
-.modalEdit input
+.modal input, label
 {
     display: block;
 }
 
-.modalTask label,
-.modalEdit label,
-.modalProject label
+.modal label
 {
     margin-bottom: 30px;
 }
 
-.modalTask h1,
-.modalEdit h1,
-.modalProject h1
+.modal h1
 {
     text-align: center;
     padding: 30px;
     color: rgb(97, 53, 255);
 }
 
-.modalTask input, 
-.modalEdit input,
-.modalTask textarea,
-.modalEdit textarea,
-.modalTask select,
-.modalEdit select,
-.modalProject input
+.modal input, 
+.modal textarea,
+.modal select
 {
     width: 250px;
 }
 
-
-.modalProject {
-
-   
+.modal{
     flex-direction: column;
     background-color: white;
     transition: 0.1s ease;
@@ -182,8 +143,6 @@ select {
     padding: 20px;
     color:rgb(97, 53, 255);
     border-radius: 12px;
-    
-    
 }
 
 
