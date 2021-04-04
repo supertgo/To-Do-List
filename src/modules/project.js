@@ -47,8 +47,10 @@ export const updateTasksOfActiveProject = () => {
     
     let project = projects[getIndexOfActiveProject(projects)];
     let divTasks = document.querySelector('#todos');
-
-    for (let child of divTasks.children) child.remove()
+    console.log(divTasks.children);
+    for (let i = 0; i < divTasks.childElementCount; i++) {
+        divTasks.remove(divTasks.children[i]);
+    }
 
     project.tasks.forEach((task) => {Task.addTaskToDOM(Task.createTaskElement(task))})
 }
@@ -59,4 +61,13 @@ export const render = (array) => {
         if (project.name != 'myList')
             appendNewProjectAtDOM(createElementProject(project.name));
     });
+}
+
+export const sortTaskByDate = (array) => {
+
+    array.sort((a, b) => {
+        if (a.date == b.date) return 0;
+        a.date > b.date ? 1: -1;
+        
+    })
 }

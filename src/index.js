@@ -50,6 +50,7 @@ function storage (){
     if (localStorage.MyList){
 
         projects = getStorage();
+        Project.sortTaskByDate(projects[Project.getIndexOfActiveProject(projects)].tasks);
         Project.updateTasksOfActiveProject();
         Project.render(projects);
     }
