@@ -1,21 +1,20 @@
 import {submitTask, submitProject} from '../index';
 import {returnTaskByName} from './task';
 
-export const projectForm = (() => {
-
+export const projectForm =(() => {
     const projectForm = document.querySelector('.modalProject');
     const submit = document.querySelector('#btnSubmitProject');
     const name = document.querySelector('#inputProjectName');
 
-    const show = () =>  {
+    const show =() =>  {
         projectForm.style.display = 'flex';
     }
 
-    const _hide = () => {
+    const _hide =() => {
         projectForm.style.display = 'none';
     }
 
-    submit.addEventListener('click', () =>{
+    submit.addEventListener('click',() =>{
         _hide();
 
         if (name != ' ')
@@ -25,8 +24,7 @@ export const projectForm = (() => {
     return {show}
 })();
 
-export const taskForm = (() => {
-
+export const taskForm =(() => {
     const modalTask = document.querySelector('.modalTask');
     const submit = document.querySelector('#btnSubmitTask');
     const inputTask = document.querySelector('#inputTask');
@@ -34,28 +32,26 @@ export const taskForm = (() => {
     const date = document.querySelector('#taskDate');
     const description = document.querySelector('#description');
    
-    const show = () => {
+    const show =() => {
         _setInputName();
         modalTask.style.display= 'flex';
     }
 
-    const _hide = () => {
-
+    const _hide =() => {
         _resetInput();
         modalTask.style.display= 'none';
     }
 
-    const _resetInput = () => {
+    const _resetInput =() => {
         inputTask.value = '';
     }
 
-    const _setInputName = () => {
+    const _setInputName =() => {
         name.value = inputTask.value;
     }
-    submit.addEventListener('click', () => {
+    submit.addEventListener('click',() => {
         _hide();
         
-
         if (name.value != '')
             submitTask(name.value, description.value, date.value);
     });
@@ -64,7 +60,6 @@ export const taskForm = (() => {
 })();
 
 export const editForm = (taskName) => {
-
     const div = document.querySelector('.modalEdit');
     const submit = document.querySelector('#btnSubmitNewTask');
     const inputTask = document.querySelector('#inputNewTask');
@@ -72,44 +67,37 @@ export const editForm = (taskName) => {
     const date = document.querySelector('#newTaskDate');
     const description = document.querySelector('#newDescription');
 
-    const show = () => {
+    const show =() => {
         _setInputs(returnTaskByName(taskName.textContent));
         div.style.display= 'flex';
     }
 
-    const _hide = () => {
+    const _hide =() => {
         div.style.display= 'none';
     }
 
-    const _resetInput = () => {
-        inputTask.value = '';
-    }
-
-    const _setInputs = (task) => {
+    const _setInputs =(task) => {
         name.value = task.name;
         description.value = task.description;
         date.value = task.date;
     }
 
-    const _copyValues =  (task) => {
-
+    const _copyValues =(task) => {
         task.name = name.value;
         task.description = description.value;
         task.date = date.value;
     }
-    const _updateTask = (name) => {
+    const _updateTask =(name) => {
         _copyValues(returnTaskByName(name));
     }
 
-    const _updateElement = (task) => {
-
+    const _updateElement =(task) => {
         if (name != '')
             task.children[1].textContent = name.value;
         task.children[2].textContent = date.value;
     }
     
-    submit.addEventListener('click', () => {
-
+    submit.addEventListener('click',() => {
         _updateTask(taskName.textContent);
         _updateElement(taskName.parentNode);
         _hide();

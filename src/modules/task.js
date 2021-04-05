@@ -5,17 +5,16 @@ import {editForm} from './forms';
 export const createTask = (name, description, date, priority) => {
 
     return {
-        name : name,
-        description: description,
-        date : date,
-        priority: priority,
+        name,
+        description,
+        date,
+        priority,
         checked: false,
         id: Date.now().toString(),
-    }
+    };
 }
 
 export const createTaskElement  = (task) => {
-    
     const li = document.createElement('li');
     const spanName = document.createElement('span');
     const spanDate = document.createElement('span');
@@ -61,13 +60,14 @@ export const addTaskToDOM = (task) => {
     document.querySelector('#todos').appendChild(task);
 }
 
-export const addTaskToArray = (array, task) => { array.push(task); }
+export const addTaskToArray = (array, task) => { 
+    array.push(task); 
+}
 
 const _taskRemove  = (btn) => {
-
     const task = btn.parentNode.parentNode;
 
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', () => {
 
         const divTodos = document.querySelector('#todos');
         divTodos.removeChild(task);
@@ -80,22 +80,18 @@ const _taskRemove  = (btn) => {
 
 }
 const _checkTask = (taskElement, task) => {
-
     task.checked = true;
     taskElement.classList.add('checked');
     taskElement.classList.remove('unchecked');
-
 }
 
 const _uncheckTask = (taskElement, task) => {
-
     task.checked = false;
     taskElement.classList.add('unchecked');
     taskElement.classList.remove('checked');
 }
 
 const _checkBtn = (btn) => {
-
     let taskElement = btn.parentNode.parentNode;
 
     btn.addEventListener('click', () => {
@@ -113,7 +109,6 @@ const _checkBtn = (btn) => {
 }
 
 export const returnTaskByName = (name) => {
-
     let task = null;
     projects[Project.getIndexOfActiveProject(projects)].tasks.forEach((item) => {if (item.name == name) {task = item}})
 
@@ -122,7 +117,6 @@ export const returnTaskByName = (name) => {
 }
 
 const _editTask = (btn) => {
-
     let taskElement = btn.parentNode.parentNode;
 
     btn.addEventListener('click', () => {

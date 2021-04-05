@@ -16,10 +16,9 @@ newListBtn.addEventListener('click', () => projectForm.show());
 btnAddTask.addEventListener('click', () => taskForm.show());
 
 export function submitProject (name){
-    
     const newProject = Project.createProject(name);
-    let projectElement = Project.createElementProject(name);
     const listSelector = document.querySelector('#listsSelect');
+    let projectElement = Project.createElementProject(name);
     
     Project.appendNewProjectAtDOM(projectElement);
     Project.appendProjectToArray(projects, newProject);
@@ -29,7 +28,6 @@ export function submitProject (name){
 }
 
 export function submitTask (name, description, date) {
-
     const newTask = Task.createTask(name, description, date);
     const newTaskElement = Task.createTaskElement(newTask);
 
@@ -40,23 +38,24 @@ export function submitTask (name, description, date) {
 }
 
 function storage (){
-
     if (localStorage.MyList){
 
         projects = getStorage();
         Project.sortTaskByDate(projects[Project.getIndexOfActiveProject(projects)].tasks);
         Project.updateTasksOfActiveProject();
         Project.render(projects);
-    }
-
-    else {
+    } else {
         Project.appendProjectToArray(projects, Project.createProject('myList'));
     }
 }
 
-export function saveStorage () { localStorage.setItem('MyList', JSON.stringify(projects))}
+export function saveStorage () { 
+    localStorage.setItem('MyList', JSON.stringify(projects));
+}
 
-function getStorage (){return JSON.parse(localStorage.getItem('MyList'))}
+function getStorage (){
+    return JSON.parse(localStorage.getItem('MyList'));
+}
 
 storage();
 
