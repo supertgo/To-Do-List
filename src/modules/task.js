@@ -1,6 +1,58 @@
-import {projects, saveStorage} from '../index';
+import { projects, saveStorage } from '../index';
 import * as Project from './project';
-import {editForm} from './forms';
+import { editForm } from './forms';
+
+export const returnTaskByName = (name) => {
+    let task = null;
+    projects[Project.getIndexOfActiveProject(projects)].tasks.forEach((item) => {
+        if (item.name == name) {
+            task = item;
+        }
+    });
+
+    return task;
+
+};
+
+const _checkTask = (taskElement, task) => {
+    task.checked = true;
+    taskElement.classList.add('checked');
+    taskElement.classList.remove('unchecked');
+};
+
+const _uncheckTask = (taskElement, task) => {
+    task.checked = false;
+    taskElement.classList.add('unchecked');
+    taskElement.classList.remove('checked');
+};
+
+const _checkBtn = (btn) => {
+    const taskElement = btn.parentNode.parentNode;
+
+    btn.addEventListener('click', () => {
+
+        const task = returnTaskByName(taskElement.children[1].textContent);
+
+        if(task != null){
+            if (task.checked == false) _checkTask(taskElement, task);
+            else _uncheckTask(taskElement, task);
+        }
+        
+    });
+
+    saveStorage();
+};
+
+
+const _editTask = (btn) => {
+    const taskElement = btn.parentNode.parentNode;
+
+    btn.addEventListener('click', () => {
+        editForm(taskElement.children[1]).show();
+
+    });
+};
+
 
 export const createTask = (name, description, date, priority) => {
 
@@ -12,9 +64,28 @@ export const createTask = (name, description, date, priority) => {
         checked: false,
         id: Date.now().toString(),
     };
-}
+};
 
-export const createTaskElement  = (task) => {
+const _taskRemove = (btn) => {
+    const task = btn.parentNode.parentNode;
+
+    btn.addEventListener('click', () => {
+
+        const divTodos = document.querySelector('#todos');
+        divTodos.removeChild(task);
+
+        const array = projects[Project.getIndexOfActiveProject(projects)].tasks;
+
+        array.splice(
+            array.indexOf(returnTaskByName(task.children[1].textContent)),1);
+        
+        saveStorage();
+    });
+
+};
+
+export const createTaskElement = (task) => {
+
     const li = document.createElement('li');
     const spanName = document.createElement('span');
     const spanDate = document.createElement('span');
@@ -22,7 +93,7 @@ export const createTaskElement  = (task) => {
     const divButtons = document.createElement('div');
     const btnEdit = document.createElement('button');
     const btnRemove = document.createElement('button');
-    const btnCheck = document.createElement('button')
+    const btnCheck = document.createElement('button');
     const iCircle = document.createElement('i');
     const iRemove = document.createElement('i');
     const iEdit = document.createElement('i');
@@ -54,73 +125,12 @@ export const createTaskElement  = (task) => {
     _editTask(btnEdit);
 
     return li;
-}
+};
 
 export const addTaskToDOM = (task) => { 
     document.querySelector('#todos').appendChild(task);
-}
+};
 
 export const addTaskToArray = (array, task) => { 
     array.push(task); 
-}
-
-const _taskRemove  = (btn) => {
-    const task = btn.parentNode.parentNode;
-
-    btn.addEventListener('click', () => {
-
-        const divTodos = document.querySelector('#todos');
-        divTodos.removeChild(task);
-
-        let array = projects[Project.getIndexOfActiveProject(projects)].tasks;
-        array.splice(array.indexOf(returnTaskByName(task.children[1].textContent)), 1);
-        
-        saveStorage();
-    });
-
-}
-const _checkTask = (taskElement, task) => {
-    task.checked = true;
-    taskElement.classList.add('checked');
-    taskElement.classList.remove('unchecked');
-}
-
-const _uncheckTask = (taskElement, task) => {
-    task.checked = false;
-    taskElement.classList.add('unchecked');
-    taskElement.classList.remove('checked');
-}
-
-const _checkBtn = (btn) => {
-    let taskElement = btn.parentNode.parentNode;
-
-    btn.addEventListener('click', () => {
-
-        let task = returnTaskByName(taskElement.children[1].textContent);
-
-        if(task != null){
-            if (task.checked == false) _checkTask(taskElement, task);
-            else _uncheckTask(taskElement, task);
-        }
-        
-    })
-
-    saveStorage();
-}
-
-export const returnTaskByName = (name) => {
-    let task = null;
-    projects[Project.getIndexOfActiveProject(projects)].tasks.forEach((item) => {if (item.name == name) {task = item}})
-
-    return task;
-
-}
-
-const _editTask = (btn) => {
-    let taskElement = btn.parentNode.parentNode;
-
-    btn.addEventListener('click', () => {
-        editForm(taskElement.children[1]).show();
-
-    });
-}
+};

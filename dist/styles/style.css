@@ -1,170 +1,165 @@
 body {
-    background-image: linear-gradient(120deg, #7834e7, #390065);
-    color: rgb(255, 255, 255);
-    width: 100vw;
-    min-height: 100vh;
+  background-image: linear-gradient(120deg, #7834e7, #390065);
+  color: rgb(255, 255, 255);
+  width: 100vw;
+  min-height: 100vh;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body > h1 {
-    color: blueviolet;
-    padding-left: 10px;
-    text-align: center;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.712);
-    padding: 5px;
+  color: blueviolet;
+  padding-left: 10px;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.712);
+  padding: 5px;
 }
 
-main{
-
-    justify-content: center;
-    align-items: center;
-    min-height: 20vh;
-    display: flex;
-    flex-direction: column;
+main {
+  justify-content: center;
+  align-items: center;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
 }
 
-main input, main button {
-    padding: 0.5rem;
+main input,
+main button {
+  padding: 0.5rem;
 }
 
 button {
-    border: none;
-    cursor: pointer;
+  border: none;
+  cursor: pointer;
 }
 
 span {
-    text-align: center;
+  text-align: center;
 }
 
 #newList {
-    background-color:rgba(0, 0, 0, 0.35);
-    color: white;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: white;
 }
 
 .top > input {
-   width: 300px;
+  width: 300px;
 }
 
 #projects {
-    margin-top: 5%;
-    margin-bottom: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 select {
-    width: 100px;
-    padding: 0.3rem;
+  width: 100px;
+  padding: 0.3rem;
 }
 
 #todos > li {
-    margin-top: 3%;
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    text-align: center;
-    align-items: center;
+  margin-top: 3%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  text-align: center;
+  align-items: center;
 }
 
 .btnRemove {
-    background: red;
-    color: white;
+  background: red;
+  color: white;
 }
 
 .btnCheck {
-    background: green;
-    color: white;
-    border: none;
+  background: green;
+  color: white;
+  border: none;
 }
 
 .checked {
-    text-decoration: line-through;
-    opacity: 0.5;
+  text-decoration: line-through;
+  opacity: 0.5;
 }
 
 .unchecked {
-
-    text-decoration: none;
-    opacity: 1;
+  text-decoration: none;
+  opacity: 1;
 }
 
 #tasks > .top > button {
-    background: rgba(0, 0, 0, 0.116);
-    color: white;
+  background: rgba(0, 0, 0, 0.116);
+  color: white;
 }
 
-#taskForm, #taskEdit {
-    color:rgb(97, 53, 255);
+#taskForm,
+#taskEdit {
+  color: rgb(97, 53, 255);
 }
 
-.modal input
-{
-    padding: 0.5rem;
+.modal input {
+  padding: 0.5rem;
 }
 
-.modal input, label
-{
-    display: block;
+.modal input,
+label {
+  display: block;
 }
 
-.modal label
-{
-    margin-bottom: 30px;
+.modal label {
+  margin-bottom: 30px;
 }
 
-.modal h1
-{
-    text-align: center;
-    padding: 30px;
-    color: rgb(97, 53, 255);
+.modal h1 {
+  text-align: center;
+  padding: 30px;
+  color: rgb(97, 53, 255);
 }
 
-.modal input, 
+.modal input,
 .modal textarea,
-.modal select
-{
-    width: 250px;
+.modal select {
+  width: 250px;
 }
 
-.modal{
-    flex-direction: column;
-    background-color: white;
-    transition: 0.1s ease;
-    position: fixed;
-    display: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    color:rgb(97, 53, 255);
-    border-radius: 12px;
+.modal {
+  flex-direction: column;
+  background-color: white;
+  transition: 0.1s ease;
+  position: fixed;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  color: rgb(97, 53, 255);
+  border-radius: 12px;
 }
-
 
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.712);
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 5px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.712);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 5px;
 }
 
 #btnSubmitTask {
-    border-color:rgb(97, 53, 255);
+  border-color: rgb(97, 53, 255);
 }
 footer p {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 footer span {
-    font-size: 1.7rem;
+  font-size: 1.7rem;
 }

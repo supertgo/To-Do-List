@@ -1,62 +1,65 @@
-import {projectForm, taskForm} from './modules/forms';
-import * as Task from './modules/task';
-import * as Project  from './modules/project';
+import { projectForm, taskForm } from "./modules/forms";
+import * as Task from "./modules/task";
+import * as Project from "./modules/project";
 
-const btnAddTask = document.querySelector('#btnAddTask');
-const newListBtn = document.querySelector('#newList');
-const select = document.querySelector('#listsSelect');
+const btnAddTask = document.querySelector("#btnAddTask");
+const newListBtn = document.querySelector("#newList");
+const select = document.querySelector("#listsSelect");
 
-let projects = []; 
+let projects = [];
 
-select.addEventListener('change', () => {
+select.addEventListener("change", () => {
+  Project.updateTasksOfActiveProject();
+});
+
+newListBtn.addEventListener("click", () => projectForm.show());
+btnAddTask.addEventListener("click", () => taskForm.show());
+
+export function submitProject(name) {
+  const newProject = Project.createProject(name);
+  const listSelector = document.querySelector("#listsSelect");
+  let projectElement = Project.createElementProject(name);
+
+  Project.appendNewProjectAtDOM(projectElement);
+  Project.appendProjectToArray(projects, newProject);
+
+  saveStorage();
+}
+
+export function submitTask(name, description, date) {
+  const newTask = Task.createTask(name, description, date);
+  const newTaskElement = Task.createTaskElement(newTask);
+
+  Task.addTaskToDOM(newTaskElement);
+  Task.addTaskToArray(
+    projects[Project.getIndexOfActiveProject(projects)].tasks,
+    newTask
+  );
+
+  saveStorage();
+}
+
+function storage() {
+  if (localStorage.MyList) {
+    projects = getStorage();
+    Project.sortTaskByDate(
+      projects[Project.getIndexOfActiveProject(projects)].tasks
+    );
     Project.updateTasksOfActiveProject();
-})
-
-newListBtn.addEventListener('click', () => projectForm.show());
-btnAddTask.addEventListener('click', () => taskForm.show());
-
-export function submitProject (name){
-    const newProject = Project.createProject(name);
-    const listSelector = document.querySelector('#listsSelect');
-    let projectElement = Project.createElementProject(name);
-    
-    Project.appendNewProjectAtDOM(projectElement);
-    Project.appendProjectToArray(projects, newProject);
-
-    saveStorage();
-    
+    Project.render(projects);
+  } else {
+    Project.appendProjectToArray(projects, Project.createProject("myList"));
+  }
 }
 
-export function submitTask (name, description, date) {
-    const newTask = Task.createTask(name, description, date);
-    const newTaskElement = Task.createTaskElement(newTask);
-
-    Task.addTaskToDOM(newTaskElement);
-    Task.addTaskToArray(projects[Project.getIndexOfActiveProject(projects)].tasks, newTask);
-
-    saveStorage();
+export function saveStorage() {
+  localStorage.setItem("MyList", JSON.stringify(projects));
 }
 
-function storage (){
-    if (localStorage.MyList){
-
-        projects = getStorage();
-        Project.sortTaskByDate(projects[Project.getIndexOfActiveProject(projects)].tasks);
-        Project.updateTasksOfActiveProject();
-        Project.render(projects);
-    } else {
-        Project.appendProjectToArray(projects, Project.createProject('myList'));
-    }
-}
-
-export function saveStorage () { 
-    localStorage.setItem('MyList', JSON.stringify(projects));
-}
-
-function getStorage (){
-    return JSON.parse(localStorage.getItem('MyList'));
+function getStorage() {
+  return JSON.parse(localStorage.getItem("MyList"));
 }
 
 storage();
 
-export {projects}
+export { projects };

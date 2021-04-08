@@ -1,6 +1,6 @@
 # To do List
 
-This is a task project  at <a href = 'https://www.theodinproject.com/'  target='_blank' >Odin Project Curriculum</a>
+This is a task project at <a href = 'https://www.theodinproject.com/'  target='_blank' >Odin Project Curriculum</a>
 
 👉 Demo: https://supertgo.github.io/To-Do-List/
 
