@@ -15,10 +15,13 @@ select.addEventListener("change", () => {
 newListBtn.addEventListener("click", () => projectForm.show());
 btnAddTask.addEventListener("click", () => taskForm.show());
 
+export function saveStorage() {
+  localStorage.setItem("MyList", JSON.stringify(projects));
+}
+
 export function submitProject(name) {
   const newProject = Project.createProject(name);
-  const listSelector = document.querySelector("#listsSelect");
-  let projectElement = Project.createElementProject(name);
+  const projectElement = Project.createElementProject(name);
 
   Project.appendNewProjectAtDOM(projectElement);
   Project.appendProjectToArray(projects, newProject);
@@ -39,6 +42,11 @@ export function submitTask(name, description, date) {
   saveStorage();
 }
 
+
+function getStorage() {
+  return JSON.parse(localStorage.getItem("MyList"));
+}
+
 function storage() {
   if (localStorage.MyList) {
     projects = getStorage();
@@ -50,14 +58,6 @@ function storage() {
   } else {
     Project.appendProjectToArray(projects, Project.createProject("myList"));
   }
-}
-
-export function saveStorage() {
-  localStorage.setItem("MyList", JSON.stringify(projects));
-}
-
-function getStorage() {
-  return JSON.parse(localStorage.getItem("MyList"));
 }
 
 storage();

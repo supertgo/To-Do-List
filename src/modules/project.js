@@ -26,7 +26,6 @@ export const appendProjectToArray = (array, newProject) => {
 
 export const getActiveProject = () => {
   const select = document.querySelector("#listsSelect");
-
   return select.options[select.selectedIndex].textContent;
 };
 

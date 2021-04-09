@@ -11,7 +11,6 @@ module.exports = {
   rules: {
     "no-var": "error",
     semi: "error",
-    indent: "error",
     "no-multi-spaces": "error",
     "space-in-parens": "error",
     "no-multiple-empty-lines": "error",
