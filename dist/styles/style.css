@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all .3s ease-out;
 }
 
 body > h1 {
@@ -82,6 +83,15 @@ select {
   border: none;
 }
 
+.closebtn {
+  font-size: 1.5rem;
+  width: 25px;
+  background-color: white;
+  color: #390065;
+  text-decoration: none;
+  outline: none;
+}
+
 .checked {
   text-decoration: line-through;
   opacity: 0.5;
@@ -130,7 +140,7 @@ label {
 .modal {
   flex-direction: column;
   background-color: white;
-  transition: 0.1s ease;
+  transition: all 0.5s ease;
   position: fixed;
   display: none;
   top: 50%;
@@ -156,6 +166,7 @@ footer {
 #btnSubmitTask {
   border-color: rgb(97, 53, 255);
 }
+
 footer p {
   font-size: 1.2rem;
 }

@@ -5,6 +5,7 @@ export const projectForm = (() => {
   const projectForm = document.querySelector(".modalProject");
   const submit = document.querySelector("#btnSubmitProject");
   const name = document.querySelector("#inputProjectName");
+  const close = document.querySelector("#modalprojectbtnclose");
 
   const show = () => {
     projectForm.style.display = "flex";
@@ -20,6 +21,8 @@ export const projectForm = (() => {
     if (name != " ") submitProject(name.value);
   });
 
+  close.addEventListener('click', ()=> _hide());
+
   return { show };
 })();
 
@@ -30,6 +33,7 @@ export const taskForm = (() => {
   const name = document.querySelector("#inputTaskName");
   const date = document.querySelector("#taskDate");
   const description = document.querySelector("#description");
+  const close = document.querySelector("#modaltaskbtnclose");
 
   const _setInputName = () => {
     name.value = inputTask.value;
@@ -54,6 +58,8 @@ export const taskForm = (() => {
     if (name.value != "") submitTask(name.value, description.value, date.value);
   });
 
+  close.addEventListener('click', ()=> _hide());
+
   return { show };
 })();
 
@@ -63,6 +69,7 @@ export const editForm = (taskName) => {
   const name = document.querySelector("#inputNewTaskName");
   const date = document.querySelector("#newTaskDate");
   const description = document.querySelector("#newDescription");
+  const close = document.querySelector("#modaleditbtnclose");
 
   const _setInputs = (task) => {
     name.value = task.name;
@@ -98,6 +105,8 @@ export const editForm = (taskName) => {
     _updateElement(taskName.parentNode);
     _hide();
   });
+
+  close.addEventListener("click", ()=> _hide());
 
   return { show };
 };
