@@ -9,6 +9,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all .3s ease-in;
 }
 
 body > h1 {
@@ -82,6 +83,13 @@ select {
     border: none;
 }
 
+.btnClose {
+    width: 20px;
+    background: white;
+    color:rgb(97, 53, 255);
+    font-size: 1.5rem;
+}
+
 .checked {
     text-decoration: line-through;
     opacity: 0.5;
@@ -134,7 +142,6 @@ select {
 .modal{
     flex-direction: column;
     background-color: white;
-    transition: 0.1s ease;
     position: fixed;
     display: none;
     top: 50%;

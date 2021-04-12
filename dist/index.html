@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" heref="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>SuperTgo´s ToDoList</title>
     </head>
 
@@ -36,6 +36,7 @@
             </div>
        
            <div class="modal modalTask">
+                <button class="btnClose" id="modalTaskBtnClose"><i class="fa fa-close"></i></button>
                 <h1>New Task </h1>
 
                 <form id="newTaskForm">
@@ -64,6 +65,7 @@
             </div>
 
             <div class="modal modalProject">
+                <button class="btnClose" id="modalProjectBtnClose"><i class="fa fa-close"></i></button>
                 <h1>New Project</h1>
                 <form  id="projectForm">
                     <label> 
@@ -78,7 +80,7 @@
         </main>
         
         <div class="modal modalEdit">
-
+            <button class="btnClose" id="modalEditBtnClose"><i class="fa fa-close"></i></button>
             <h1>Update Task</h1>
 
             <form id="taskForm">
