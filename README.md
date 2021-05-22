@@ -4,6 +4,10 @@ This is a task project  at <a href = 'https://www.theodinproject.com/'  target='
 
 👉 Demo: https://supertgo.github.io/To-Do-List/
 
+<p align="center">
+  <img src="/demo/to-do.gif" />
+</p>
+
 ## Build With
 
 <p><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/>
